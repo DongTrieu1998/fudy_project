@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/icons_fudy.png</file>
+    </qresource>
+</RCC>

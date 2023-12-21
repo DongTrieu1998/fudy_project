@@ -36,6 +36,8 @@ else()
     else()
         add_executable(fudy
           ${PROJECT_SOURCES}
+          image.qrc
+
         )
     endif()
 endif()
