@@ -38,7 +38,7 @@ ApplicationWindow {
 			pixelSize: 128
 		}
 		horizontalAlignment: Text.AlignHCenter
-		color: "#275910"
+		color: "#275910" //TODO: Create Font and Color component for Project
 
 		text: qsTr("Fudy")
 	}
