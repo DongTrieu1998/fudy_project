@@ -9,12 +9,45 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Qml)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Qml)
+
+set(requests_styling_components_header
+    StylingComponents/myColor.h
+    StylingComponents/myFont.h
+)
+
+set(requests_styling_components_source
+    StylingComponents/myColor.cpp
+    StylingComponents/myFont.cpp
+)
+
+set(requests_headers
+    ${requests_styling_components_header}
+)
+
+set(requests_sources
+    ${requests_styling_components_source}
+)
+
+set(headers
+    ${requests_headers}
+)
+
+set(sources
+    ${requests_sources}
+)
+
+set(resources
+    qml.qrc
+    image.qrc
+)
 
 set(PROJECT_SOURCES
         main.cpp
-        qml.qrc
+        ${headers}
+        ${sources}
+        ${resources}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -36,14 +69,15 @@ else()
     else()
         add_executable(fudy
           ${PROJECT_SOURCES}
-          image.qrc
-
         )
     endif()
 endif()
 
 target_link_libraries(fudy
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::Quick
+  Qt${QT_VERSION_MAJOR}::Qml
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

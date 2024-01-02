@@ -15,7 +15,7 @@ ApplicationWindow {
 
 	background: Rectangle {
 		anchors.fill: parent
-		color: "#B447CC"
+		color: "#00017A"
 	}
 
 	Image {
