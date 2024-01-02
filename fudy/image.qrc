@@ -1,5 +1,19 @@
 <RCC>
     <qresource prefix="/">
         <file>image/icons_fudy.png</file>
+        <file>image/angle-double-left.svg</file>
+        <file>image/angle-double-right.svg</file>
+        <file>image/bell.svg</file>
+        <file>image/calendar.svg</file>
+        <file>image/checkbox (1).svg</file>
+        <file>image/checkbox.svg</file>
+        <file>image/document.svg</file>
+        <file>image/home.svg</file>
+        <file>image/menu-dots-vertical.svg</file>
+        <file>image/plus.svg</file>
+        <file>image/postit.svg</file>
+        <file>image/search.svg</file>
+        <file>image/settings.svg</file>
+        <file>image/square-small.svg</file>
     </qresource>
 </RCC>
