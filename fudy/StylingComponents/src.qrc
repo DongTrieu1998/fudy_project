@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/myPlugin">
-        <file>CustomRect.qml</file>
-    </qresource>
-</RCC>
