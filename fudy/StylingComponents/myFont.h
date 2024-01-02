@@ -1,31 +1,35 @@
-#ifndef MYCUSTOMITEM_H
-#define MYCUSTOMITEM_H
+#ifndef MYFONT_H
+#define MYFONT_H
 
 #include <QObject>
+#include <QQmlEngine>
+#include <QJSEngine>
+#include <QFont>
 
-class MyCustomItem : public QObject
+class MyFont : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
-    Q_PROPERTY(int height READ height WRITE setHeight NOTIFY heightChanged)
+    Q_PROPERTY(QFont text1 READ text1 CONSTANT)
+    Q_PROPERTY(QFont heading1 READ heading1 CONSTANT)
+    Q_PROPERTY(QFont keySmall READ keySmall CONSTANT)
+    Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT)
+    Q_PROPERTY(QFont keyLarge READ keyLarge CONSTANT)
+
 
 public:
-    explicit MyCustomItem(QObject *parent = nullptr);
+    explicit MyFont(QObject *parent = nullptr);
 
-    int width() const;
-    void setWidth(int newWidth);
+    QFont text1() const;
 
-    int height() const;
-    void setHeight(int newHeight);
+    QFont heading1() const;
 
-signals:
-
-    void widthChanged();
-    void heightChanged();
-
+    QFont keySmall() const;
+    QFont keyMedium() const;
+    QFont keyLarge() const;
 private:
-    int m_width;
-    int m_height;
+    const QString g_textFontFamilyName = "Time New Roman";
+    const QString g_headingFontFamilyName = "Time New Roman";
+    const QString g_keyFontFamilyName = "Time New Roman";
 };
 
-#endif // MYCUSTOMITEM_H
+#endif // MYFONT_H

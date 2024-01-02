@@ -1,31 +1,35 @@
-#ifndef MYCUSTOMITEM_H
-#define MYCUSTOMITEM_H
+#ifndef MYCOLOR_H
+#define MYCOLOR_H
 
 #include <QObject>
+#include <QColor>
+#include <QQmlEngine>
+#include <QJSEngine>
 
-class MyCustomItem : public QObject
+class MyColor : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
-    Q_PROPERTY(int height READ height WRITE setHeight NOTIFY heightChanged)
+    Q_PROPERTY(QColor layer READ layer CONSTANT)
+    Q_PROPERTY(QColor accent READ accent CONSTANT)
+    Q_PROPERTY(QColor lightAccent READ lightAccent CONSTANT)
+    Q_PROPERTY(QColor hover READ hover CONSTANT)
 
 public:
-    explicit MyCustomItem(QObject *parent = nullptr);
+    explicit MyColor(QObject *parent = nullptr);
 
-    int width() const;
-    void setWidth(int newWidth);
+    QColor layer() const;
 
-    int height() const;
-    void setHeight(int newHeight);
+    QColor accent() const;
 
-signals:
+    QColor lightAccent() const;
 
-    void widthChanged();
-    void heightChanged();
+    QColor hover() const;
 
 private:
-    int m_width;
-    int m_height;
+    const QRgb g_layerColor = 0xfffffff;
+    const QRgb g_accentColor = 0xfffffff;
+    const QRgb g_lightAccentColor = 0xfffffff;
+    const QRgb g_hoverColor = 0xfffffff;
 };
 
-#endif // MYCUSTOMITEM_H
+#endif // MYCOLOR_H

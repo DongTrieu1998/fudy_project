@@ -1,33 +1,47 @@
-#include "mycustomitem.h"
+#include "myFont.h"
 
-MyCustomItem::MyCustomItem(QObject *parent)
-    : QObject{parent}, m_width{200}, m_height{200}
+QFont prepareFont(const QString &family,
+                  qreal fontSizeF,
+                  int weight = QFont::PreferNoHinting)
 {
+    QFont font;
+    font.setFamily(family);
+    font.setPointSizeF(fontSizeF);
+    font.setWeight(weight);
+    font.setHintingPreference(QFont::PreferNoHinting);
 
+    return font;
 }
 
-int MyCustomItem::width() const
+QFont MyFont::text1() const
 {
-    return m_width;
+    QFont font = prepareFont(g_textFontFamilyName, 9);
+    return font;
 }
 
-void MyCustomItem::setWidth(int newWidth)
+QFont MyFont::heading1() const
 {
-    if (m_width == newWidth)
-        return;
-    m_width = newWidth;
-    emit widthChanged();
+    QFont font = prepareFont(g_headingFontFamilyName, 9);
+    return font;
 }
 
-int MyCustomItem::height() const
+QFont MyFont::keySmall() const
 {
-    return m_height;
+    QFont font = prepareFont(g_keyFontFamilyName, 9);
+    return font;
 }
 
-void MyCustomItem::setHeight(int newHeight)
+QFont MyFont::keyMedium() const
 {
-    if (m_height == newHeight)
-        return;
-    m_height = newHeight;
-    emit heightChanged();
+    QFont font = prepareFont(g_keyFontFamilyName, 9);
+    return font;
 }
+
+QFont MyFont::keyLarge() const
+{
+    QFont font = prepareFont(g_keyFontFamilyName, 9);
+    return font;
+}
+
+MyFont::MyFont(QObject *parent): QObject(parent)
+{}

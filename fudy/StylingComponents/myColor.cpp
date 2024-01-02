@@ -1,33 +1,24 @@
-#include "mycustomitem.h"
+#include "myColor.h"
 
-MyCustomItem::MyCustomItem(QObject *parent)
-    : QObject{parent}, m_width{200}, m_height{200}
+MyColor::MyColor(QObject *parent)
+{}
+
+QColor MyColor::layer() const
 {
-
+    return QColor::fromRgb(g_layerColor);
 }
 
-int MyCustomItem::width() const
+QColor MyColor::accent() const
 {
-    return m_width;
+    return QColor::fromRgb(g_accentColor);
 }
 
-void MyCustomItem::setWidth(int newWidth)
+QColor MyColor::lightAccent() const
 {
-    if (m_width == newWidth)
-        return;
-    m_width = newWidth;
-    emit widthChanged();
+    return QColor::fromRgb(g_lightAccentColor);
 }
 
-int MyCustomItem::height() const
+QColor MyColor::hover() const
 {
-    return m_height;
-}
-
-void MyCustomItem::setHeight(int newHeight)
-{
-    if (m_height == newHeight)
-        return;
-    m_height = newHeight;
-    emit heightChanged();
+    return QColor::fromRgb(g_hoverColor);
 }
