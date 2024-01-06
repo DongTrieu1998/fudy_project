@@ -1,9 +1,14 @@
 import QtQuick 2.15
 
 Rectangle {
+
+	property bool isShownMenuBar: false
+	signal iconClicked
+
 	width: 800
 	height: 58
 	color: "#FFDE00"
+	visible: isShownMenuBar
 
 	Image {
 		id: icon
@@ -12,6 +17,13 @@ Rectangle {
 		width: 40
 		height: 37
 		source: "qrc:/image/icons_fudy.png"
+
+		MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				iconClicked()
+			}
+		}
 	}
 
 	Row {

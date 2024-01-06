@@ -2,8 +2,12 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
+	function openApplication(url) {
+		parent.push(url)
+	}
+
 	anchors.fill: parent
-//	color: "#00017A"
+
 	Image {
 		id: iconImage
 		anchors {
@@ -40,6 +44,19 @@ Item {
 				font.family: "Ragular"
 				font.pointSize: 40
 				text: name
+			}
+
+			MouseArea {
+				anchors.fill: parent
+				onClicked: {
+					switch(model.name)
+					{
+					case "NOTE" : openApplication("qrc:/NoteScreen.qml"); break
+					case "PLAN" : openApplication("qrc:/PlanScreen.qml"); break
+					case "WORKSPACE" : openApplication("qrc:/WorkSpace.qml"); break
+					case "TODO" : openApplication("qrc:/TodoScreen.qml")
+					}
+				}
 			}
 		}
 
