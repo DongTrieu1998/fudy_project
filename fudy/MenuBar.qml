@@ -1,9 +1,15 @@
 import QtQuick 2.15
+import QtQuick.Layouts 1.15
 
 Rectangle {
+	id: root
+	property bool isShownMenuBar: false
+	signal iconClicked
+
 	width: 800
 	height: 58
 	color: "#FFDE00"
+	visible: isShownMenuBar
 
 	Image {
 		id: icon
@@ -12,13 +18,22 @@ Rectangle {
 		width: 40
 		height: 37
 		source: "qrc:/image/icons_fudy.png"
+
+		MouseArea {
+			anchors.fill: icon
+			onClicked: {
+				iconClicked();
+			}
+		}
 	}
 
 	Row {
+		id: toolIcons
+
 		spacing: 23
 		anchors {
-			verticalCenter: parent.verticalCenter
-			right: parent.right
+			verticalCenter: root.verticalCenter
+			right: root.right
 		}
 		Image {
 			width: 30

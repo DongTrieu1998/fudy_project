@@ -4,5 +4,8 @@
         <file>HomeScreen.qml</file>
         <file>WorkSpace.qml</file>
         <file>MenuBar.qml</file>
+        <file>NoteScreen.qml</file>
+        <file>PlanScreen.qml</file>
+        <file>TodoScreen.qml</file>
     </qresource>
 </RCC>
