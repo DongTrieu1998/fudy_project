@@ -2,17 +2,14 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-	function openApplication(url) {
-		parent.push(url)
-	}
-
+	id: root
 	anchors.fill: parent
 
 	Image {
 		id: iconImage
 		anchors {
-			top: parent.top
-			horizontalCenter: parent.horizontalCenter
+			top: root.top
+			horizontalCenter: root.horizontalCenter
 			topMargin: 34
 		}
 		width: 120
@@ -27,7 +24,7 @@ Item {
 		anchors{
 			top: iconImage.bottom
 			topMargin: 29
-			horizontalCenter: parent.horizontalCenter
+			horizontalCenter: root.horizontalCenter
 		}
 		spacing: 25
 
@@ -51,10 +48,11 @@ Item {
 				onClicked: {
 					switch(model.name)
 					{
-					case "NOTE" : openApplication("qrc:/NoteScreen.qml"); break
-					case "PLAN" : openApplication("qrc:/PlanScreen.qml"); break
-					case "WORKSPACE" : openApplication("qrc:/WorkSpace.qml"); break
-					case "TODO" : openApplication("qrc:/TodoScreen.qml")
+					case "NOTE" : internal.openApplication("qrc:/NoteScreen.qml"); break
+					case "PLAN" : internal.openApplication("qrc:/PlanScreen.qml"); break
+					case "WORKSPACE" : internal.openApplication("qrc:/WorkSpace.qml"); break
+					case "TODO" : internal.openApplication("qrc:/TodoScreen.qml"); break;
+					default :internal.openApplication("")
 					}
 				}
 			}
@@ -75,6 +73,14 @@ Item {
 		}
 		ListElement {
 			name: qsTr("TODO")
+		}
+	}
+
+	QtObject {
+		id: internal
+
+		function openApplication(url) {
+			root.parent.push(url)
 		}
 	}
 }

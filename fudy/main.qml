@@ -3,6 +3,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
 ApplicationWindow {
+	id: root
 	width: 800
 	height: 658
 	minimumWidth: width
@@ -20,13 +21,19 @@ ApplicationWindow {
 
 	Item {
 		id: welcomeScreen
+		anchors.fill: root
 
 		Image {
 			id: iconImage
-			width: 200.44
+			width: 200
 			height: 208
-			x:300
-			y:92
+			anchors {
+				top: welcomeScreen.top
+				topMargin: 92
+				left: welcomeScreen.left
+				leftMargin: 300
+			}
+
 			source: "qrc:/image/icons_fudy.png"
 		}
 
@@ -34,14 +41,19 @@ ApplicationWindow {
 			id: text
 			width: 280
 			height: 110
-			x: 243
-			y: 320
+			anchors {
+				top: welcomeScreen.top
+				topMargin: 320
+				left: welcomeScreen.left
+				leftMargin: 243
+			}
+
 			font {
 				family: "Italianno"
 				pixelSize: 128
 			}
 			horizontalAlignment: Text.AlignHCenter
-			color: "#275910" //TODO: Create Font and Color component for Project
+			color: "#FFDE00" //TODO: Create Font and Color component for Project
 
 			text: qsTr("Fudy")
 		}
@@ -55,12 +67,12 @@ ApplicationWindow {
 
 	StackView {
 		id: stackView
-		width: parent.width
-		visible: false
+		width: root.width
 		anchors.top: menuBar.bottom
+		visible: false
 		initialItem: HomeScreen {}
 		onCurrentItemChanged: {
-			currentItem.forceActiveFocus()
+			currentItem.forceActiveFocus();
 		}
 		pushExit: Transition {
 			XAnimator {
@@ -78,8 +90,8 @@ ApplicationWindow {
 		running: true
 		repeat: false
 		onTriggered: {
-			welcomeScreen.visible = false
-			stackView.visible = true
+			welcomeScreen.visible = false;
+			stackView.visible = true;
 		}
 	}
 
