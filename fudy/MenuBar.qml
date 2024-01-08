@@ -27,42 +27,50 @@ Rectangle {
 		}
 	}
 
-	Row {
+	RowLayout {
 		id: toolIcons
+		width: 295
+		height: 30
+		anchors {
+			verticalCenter: parent.verticalCenter
+			right: parent.right
+		}
 
 		spacing: 23
-		anchors {
-			verticalCenter: root.verticalCenter
-			right: root.right
-		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/home.svg"
 		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/search.svg"
 		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/plus.svg"
 		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/bell.svg"
 		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/settings.svg"
 		}
 		Image {
-			width: 30
-			height: 30
+			Layout.preferredWidth: 30
+			Layout.preferredHeight: 30
+			fillMode: Image.PreserveAspectCrop
 			source: "qrc:/image/menu-dots-vertical.svg"
 		}
 	}
