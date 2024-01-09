@@ -37,41 +37,23 @@ Rectangle {
 		}
 
 		spacing: 23
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/home.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/home.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/search.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/search.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/plus.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/plus.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/bell.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/bell.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/settings.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/settings.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/menu-dots-vertical.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/menu-dots-vertical.svg"
 		}
 	}
 }
