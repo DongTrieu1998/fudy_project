@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "StylingComponents/myColor.h"
-
+#include "StylingComponents/myFont.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +17,11 @@ int main(int argc, char *argv[])
                                       0,
                                       "FudyColor",
                                       MyColor::createSingletonInstance);
+    qmlRegisterSingletonType<MyColor>("Fudy.style.singleton",
+                                      1,
+                                      0,
+                                      "FudyFont",
+                                      MyFont::createSingletonInstance);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

@@ -23,6 +23,7 @@ class MyColor : public QObject
 
     Q_PROPERTY(QColor fontColor1 READ fontColor1 CONSTANT)
     Q_PROPERTY(QColor fontColor2 READ fontColor2 CONSTANT)
+    Q_PROPERTY(QColor fontColor3 READ fontColor3 CONSTANT)
 
     explicit MyColor(QObject *parent = nullptr);
     static MyColor *m_instance;
@@ -46,21 +47,24 @@ public:
 
     QColor fontColor2() const;
 
+    QColor fontColor3() const;
+
 private:
     const QRgb m_background1 = 0x00017A;
     const QRgb m_background2 = 0x1873D3;
     const QRgb m_background3 = 0xFFFFB1;
     const QRgb m_background4 = 0x619DDD;
     const QRgb m_background5 = 0x528DCB;
-    const QRgb m_background5 = 0xFFDE00;
+    const QRgb m_background6 = 0xFFDE00;
 
     const QRgb m_layer1 = 0x619DDD;
     const QRgb m_layer2 = 0x528DCB;
     const QRgb m_layer3 = 0xFFDE00;
-    const QRgb m_layer3 = 0xD9D9D9;
+    const QRgb m_layer4 = 0xD9D9D9;
 
     const QRgb m_fontColor1 = 0xFFFFFF;
     const QRgb m_fontColor2 = 0x000000;
+    const QRgb m_fontColor3 = 0xFFDE00;
 };
 
 #endif // MYCOLOR_H

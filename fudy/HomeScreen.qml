@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
+import Fudy.style.singleton 1.0
+
 Item {
 	id: root
 	anchors.fill: parent
@@ -33,11 +35,11 @@ Item {
 			width: 477
 			height: 77
 			radius: 30
-			color: "#1237A1"
+			color: FudyColor.layer1
 			Text {
 				id: buttonName
 				anchors.centerIn: parent
-				color: "#ffffff"
+				color: FudyColor.fontColor1
 				font.family: "Ragular"
 				font.pointSize: 40
 				text: name

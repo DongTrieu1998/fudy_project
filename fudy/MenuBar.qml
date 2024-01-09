@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
+import Fudy.style.singleton 1.0
+
 Rectangle {
 	id: root
 	property bool isShownMenuBar: false
@@ -8,7 +10,7 @@ Rectangle {
 
 	width: 800
 	height: 58
-	color: "#FFDE00"
+	color: FudyColor.layer3
 	visible: isShownMenuBar
 
 	Image {
@@ -35,8 +37,6 @@ Rectangle {
 			verticalCenter: parent.verticalCenter
 			right: parent.right
 		}
-
-		spacing: 23
 		MenuBarItem {
 			sourceUrl: "qrc:/image/home.svg"
 		}

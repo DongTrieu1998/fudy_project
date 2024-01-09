@@ -74,3 +74,8 @@ QColor MyColor::fontColor2() const
 {
     return QColor::fromRgb(m_fontColor2);
 }
+
+QColor MyColor::fontColor3() const
+{
+    return QColor::fromRgb(m_fontColor3);
+}

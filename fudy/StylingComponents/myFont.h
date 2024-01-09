@@ -15,9 +15,11 @@ class MyFont : public QObject
     Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT)
     Q_PROPERTY(QFont keyLarge READ keyLarge CONSTANT)
 
+    explicit MyFont(QObject *parent = nullptr);
+    static MyFont *m_instance;
 
 public:
-    explicit MyFont(QObject *parent = nullptr);
+    static QObject* createSingletonInstance(QQmlEngine *engine,  QJSEngine *scriptEngine);
 
     QFont text1() const;
 
@@ -27,9 +29,9 @@ public:
     QFont keyMedium() const;
     QFont keyLarge() const;
 private:
-    const QString g_textFontFamilyName = "Time New Roman";
-    const QString g_headingFontFamilyName = "Time New Roman";
-    const QString g_keyFontFamilyName = "Time New Roman";
+    const QString m_textFont = "Time New Roman";
+    const QString m_headingFont = "Time New Roman";
+    const QString m_keyFont = "Time New Roman";
 };
 
 #endif // MYFONT_H

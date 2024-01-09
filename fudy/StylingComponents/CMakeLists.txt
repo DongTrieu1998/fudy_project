@@ -13,7 +13,6 @@ set(styling_components_headers
 set(styling_components_sources
     myColor.cpp
     myFont.cpp
-    FudyStyleSingleton.cpp
 )
 
 set (sources
