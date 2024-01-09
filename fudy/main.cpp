@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "StylingComponents/myColor.h"
 
 
 int main(int argc, char *argv[])
@@ -10,6 +11,13 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    qmlRegisterSingletonType<MyColor>("Fudy.style.singleton",
+                                      1,
+                                      0,
+                                      "FudyColor",
+                                      MyColor::createSingletonInstance);
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
