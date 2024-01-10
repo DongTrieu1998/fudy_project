@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
+import Fudy.style.singleton 1.0
+
 ApplicationWindow {
 	id: root
 	width: 800
@@ -16,7 +18,7 @@ ApplicationWindow {
 
 	background: Rectangle {
 		anchors.fill: parent
-		color: "#00017A"
+		color: FudyColor.background1
 	}
 
 	Item {
@@ -53,7 +55,7 @@ ApplicationWindow {
 				pixelSize: 128
 			}
 			horizontalAlignment: Text.AlignHCenter
-			color: "#FFDE00" //TODO: Create Font and Color component for Project
+			color: FudyColor.fontColor3
 
 			text: qsTr("Fudy")
 		}

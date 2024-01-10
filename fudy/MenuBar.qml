@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
+import Fudy.style.singleton 1.0
+
 Rectangle {
 	id: root
 	property bool isShownMenuBar: false
@@ -8,7 +10,7 @@ Rectangle {
 
 	width: 800
 	height: 58
-	color: "#FFDE00"
+	color: FudyColor.layer3
 	visible: isShownMenuBar
 
 	Image {
@@ -35,43 +37,23 @@ Rectangle {
 			verticalCenter: parent.verticalCenter
 			right: parent.right
 		}
-
-		spacing: 23
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/home.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/home.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/search.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/search.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/plus.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/plus.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/bell.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/bell.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/settings.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/settings.svg"
 		}
-		Image {
-			Layout.preferredWidth: 30
-			Layout.preferredHeight: 30
-			fillMode: Image.PreserveAspectCrop
-			source: "qrc:/image/menu-dots-vertical.svg"
+		MenuBarItem {
+			sourceUrl: "qrc:/image/menu-dots-vertical.svg"
 		}
 	}
 }
