@@ -40,8 +40,7 @@ Item {
 				id: buttonName
 				anchors.centerIn: parent
 				color: FudyColor.fontColor1
-				font.family: "Ragular"
-				font.pointSize: 40
+				font: FudyFont.keyLarge
 				text: name
 			}
 
