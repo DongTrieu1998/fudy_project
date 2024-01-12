@@ -49,14 +49,22 @@ if (NOT TARGET StylingComponents)
      add_subdirectory(StylingComponents "${CMAKE_CURRENT_BINARY_DIR}/StylingComponents" )
 endif() 
 
+if (NOT TARGET NoteScreen)
+     add_subdirectory(NoteScreen "${CMAKE_CURRENT_BINARY_DIR}/NoteScreen" )
+endif()
+
 target_link_libraries(fudy
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   Qt${QT_VERSION_MAJOR}::Quick
   Qt${QT_VERSION_MAJOR}::Qml
   StylingComponents
+  NoteScreen
 )
 
-add_dependencies( fudy StylingComponents )
+add_dependencies(fudy
+    StylingComponents
+    NoteScreen
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

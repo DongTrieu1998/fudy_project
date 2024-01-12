@@ -50,7 +50,7 @@ Item {
 				onClicked: {
 					switch(model.name)
 					{
-					case "NOTE" : internal.openApplication("qrc:/NoteScreen.qml"); break
+					case "NOTE" : internal.openApplication("D:/TEST/fudy_project/fudy/NoteScreen/my/plugin/example/NoteScreen.qml"); break
 					case "PLAN" : internal.openApplication("qrc:/PlanScreen.qml"); break
 					case "WORKSPACE" : internal.openApplication("qrc:/WorkSpace.qml"); break
 					case "TODO" : internal.openApplication("qrc:/TodoScreen.qml"); break;

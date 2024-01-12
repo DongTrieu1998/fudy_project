@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "StylingComponents/myColor.h"
 #include "StylingComponents/myFont.h"
+#include <QDir>
 
 int main(int argc, char *argv[])
 {
@@ -23,6 +24,7 @@ int main(int argc, char *argv[])
                                       "FudyFont",
                                       MyFont::createSingletonInstance);
 
+    engine.addImportPath("./NoteScreen");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
