@@ -51,10 +51,7 @@ ApplicationWindow {
 				leftMargin: 243
 			}
 
-			font {
-				family: "Italianno"
-				pixelSize: 128
-			}
+			font: FudyFont.heading1
 			horizontalAlignment: Text.AlignHCenter
 			color: FudyColor.fontColor3
 

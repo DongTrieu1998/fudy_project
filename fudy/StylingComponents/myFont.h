@@ -5,6 +5,7 @@
 #include <QQmlEngine>
 #include <QJSEngine>
 #include <QFont>
+#include <QFontDatabase>
 
 class MyFont : public QObject
 {
@@ -20,7 +21,7 @@ class MyFont : public QObject
 
 public:
     static QObject* createSingletonInstance(QQmlEngine *engine,  QJSEngine *scriptEngine);
-
+    void addFontPath();
     QFont text1() const;
 
     QFont heading1() const;
@@ -29,9 +30,9 @@ public:
     QFont keyMedium() const;
     QFont keyLarge() const;
 private:
-    const QString m_textFont = "Time New Roman";
-    const QString m_headingFont = "Time New Roman";
-    const QString m_keyFont = "Time New Roman";
+    const QString m_headingFont = "Italianno";
+    const QString m_textFont = "Itim";
+    const QString m_keyFont = "Jua";
 };
 
 #endif // MYFONT_H

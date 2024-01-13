@@ -15,5 +15,8 @@
         <file>image/search.svg</file>
         <file>image/settings.svg</file>
         <file>image/square-small.svg</file>
+        <file>font/Italianno-Regular.ttf</file>
+        <file>font/Itim-Regular.ttf</file>
+        <file>font/Jua-Regular.ttf</file>
     </qresource>
 </RCC>

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
                                       0,
                                       "FudyColor",
                                       MyColor::createSingletonInstance);
-    qmlRegisterSingletonType<MyColor>("Fudy.style.singleton",
+    qmlRegisterSingletonType<MyFont>("Fudy.style.singleton",
                                       1,
                                       0,
                                       "FudyFont",

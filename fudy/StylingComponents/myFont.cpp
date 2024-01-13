@@ -3,7 +3,9 @@
 MyFont *MyFont::m_instance = nullptr;
 
 MyFont::MyFont(QObject *parent): QObject(parent)
-{}
+{
+    addFontPath();
+}
 
 QObject *MyFont::createSingletonInstance(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -13,6 +15,13 @@ QObject *MyFont::createSingletonInstance(QQmlEngine *engine, QJSEngine *scriptEn
         m_instance = new MyFont();
     }
     return m_instance;
+}
+
+void MyFont::addFontPath()
+{
+    QFontDatabase::addApplicationFont(":/font/Italianno-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/font/Itim-Regular.ttf");
+    QFontDatabase::addApplicationFont(":/font/Jua-Regular.ttf");
 }
 
 QFont prepareFont(const QString &family,
@@ -36,7 +45,7 @@ QFont MyFont::text1() const
 
 QFont MyFont::heading1() const
 {
-    QFont font = prepareFont(m_headingFont, 9);
+    QFont font = prepareFont(m_headingFont, 96);
     return font;
 }
 
@@ -54,6 +63,6 @@ QFont MyFont::keyMedium() const
 
 QFont MyFont::keyLarge() const
 {
-    QFont font = prepareFont(m_keyFont, 9);
+    QFont font = prepareFont(m_keyFont, 40);
     return font;
 }
