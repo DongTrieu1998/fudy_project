@@ -6,13 +6,13 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Qml)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Qml)
 
 set(styling_components_headers
-    myColor.h
-    myFont.h
+    FudyColor.h
+    FudyFont.h
 )
 
 set(styling_components_sources
-    myColor.cpp
-    myFont.cpp
+    FudyColor.cpp
+    FudyFont.cpp
 )
 
 set (sources

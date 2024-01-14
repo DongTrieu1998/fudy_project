@@ -1,5 +1,5 @@
-#ifndef MYFONT_H
-#define MYFONT_H
+#ifndef FUDYFONT_H
+#define FUDYFONT_H
 
 #include <QObject>
 #include <QQmlEngine>
@@ -7,7 +7,7 @@
 #include <QFont>
 #include <QFontDatabase>
 
-class MyFont : public QObject
+class FudyFont : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QFont text1 READ text1 CONSTANT)
@@ -16,8 +16,8 @@ class MyFont : public QObject
     Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT)
     Q_PROPERTY(QFont keyLarge READ keyLarge CONSTANT)
 
-    explicit MyFont(QObject *parent = nullptr);
-    static MyFont *m_instance;
+    explicit FudyFont(QObject *parent = nullptr);
+    static FudyFont *m_instance;
 
 public:
     static QObject* createSingletonInstance(QQmlEngine *engine,  QJSEngine *scriptEngine);
@@ -35,4 +35,4 @@ private:
     const QString m_keyFont = "Jua";
 };
 
-#endif // MYFONT_H
+#endif // FUDYFONT_H

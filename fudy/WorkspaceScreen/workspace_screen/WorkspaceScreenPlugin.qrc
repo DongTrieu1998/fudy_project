@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/NoteScreenPlugin"/>
+    <qresource prefix="/">
+        <file>WorkspaceScreen.qml</file>
+    </qresource>
+</RCC>

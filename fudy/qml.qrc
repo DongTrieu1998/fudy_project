@@ -2,11 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>HomeScreen.qml</file>
-        <file>WorkSpace.qml</file>
         <file>MenuBar.qml</file>
-        <file>NoteScreen.qml</file>
-        <file>PlanScreen.qml</file>
-        <file>TodoScreen.qml</file>
         <file>MenuBarItem.qml</file>
     </qresource>
 </RCC>

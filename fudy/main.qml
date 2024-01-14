@@ -23,7 +23,7 @@ ApplicationWindow {
 
 	Item {
 		id: welcomeScreen
-		anchors.fill: root
+		anchors.fill: parent
 
 		Image {
 			id: iconImage

@@ -1,7 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "StylingComponents/myColor.h"
-#include "StylingComponents/myFont.h"
+#include "StylingComponents/FudyColor.h"
+#include "StylingComponents/FudyFont.h"
+#include <QDir>
 
 int main(int argc, char *argv[])
 {
@@ -12,17 +13,21 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    qmlRegisterSingletonType<MyColor>("Fudy.style.singleton",
+    qmlRegisterSingletonType<FudyColor>("Fudy.style.singleton",
                                       1,
                                       0,
                                       "FudyColor",
-                                      MyColor::createSingletonInstance);
-    qmlRegisterSingletonType<MyFont>("Fudy.style.singleton",
+                                      FudyColor::createSingletonInstance);
+    qmlRegisterSingletonType<FudyFont>("Fudy.style.singleton",
                                       1,
                                       0,
                                       "FudyFont",
-                                      MyFont::createSingletonInstance);
+                                      FudyFont::createSingletonInstance);
 
+    engine.addImportPath("./NoteScreen");
+    engine.addImportPath("./PlanScreen");
+    engine.addImportPath("./TodoScreen");
+    engine.addImportPath("./WorkspaceScreen");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
