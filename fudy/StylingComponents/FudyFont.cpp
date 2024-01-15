@@ -1,23 +1,23 @@
-#include "myFont.h"
+#include "FudyFont.h"
 
-MyFont *MyFont::m_instance = nullptr;
+FudyFont *FudyFont::m_instance = nullptr;
 
-MyFont::MyFont(QObject *parent): QObject(parent)
+FudyFont::FudyFont(QObject *parent): QObject(parent)
 {
     addFontPath();
 }
 
-QObject *MyFont::createSingletonInstance(QQmlEngine *engine, QJSEngine *scriptEngine)
+QObject *FudyFont::createSingletonInstance(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
     Q_UNUSED(engine);
     Q_UNUSED(scriptEngine);
     if (m_instance == nullptr) {
-        m_instance = new MyFont();
+        m_instance = new FudyFont();
     }
     return m_instance;
 }
 
-void MyFont::addFontPath()
+void FudyFont::addFontPath()
 {
     QFontDatabase::addApplicationFont(":/font/Italianno-Regular.ttf");
     QFontDatabase::addApplicationFont(":/font/Itim-Regular.ttf");
@@ -37,31 +37,31 @@ QFont prepareFont(const QString &family,
     return font;
 }
 
-QFont MyFont::text1() const
+QFont FudyFont::text1() const
 {
     QFont font = prepareFont(m_textFont, 9);
     return font;
 }
 
-QFont MyFont::heading1() const
+QFont FudyFont::heading1() const
 {
     QFont font = prepareFont(m_headingFont, 96);
     return font;
 }
 
-QFont MyFont::keySmall() const
+QFont FudyFont::keySmall() const
 {
     QFont font = prepareFont(m_keyFont, 9);
     return font;
 }
 
-QFont MyFont::keyMedium() const
+QFont FudyFont::keyMedium() const
 {
     QFont font = prepareFont(m_keyFont, 9);
     return font;
 }
 
-QFont MyFont::keyLarge() const
+QFont FudyFont::keyLarge() const
 {
     QFont font = prepareFont(m_keyFont, 40);
     return font;

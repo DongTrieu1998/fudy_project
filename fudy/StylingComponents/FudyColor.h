@@ -1,12 +1,12 @@
-#ifndef MYCOLOR_H
-#define MYCOLOR_H
+#ifndef FUDYCOLOR_H
+#define FUDYCOLOR_H
 
 #include <QObject>
 #include <QQmlEngine>
 #include <QJSEngine>
 #include <QColor>
 
-class MyColor : public QObject
+class FudyColor : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QColor background1 READ background1 CONSTANT)
@@ -25,8 +25,8 @@ class MyColor : public QObject
     Q_PROPERTY(QColor fontColor2 READ fontColor2 CONSTANT)
     Q_PROPERTY(QColor fontColor3 READ fontColor3 CONSTANT)
 
-    explicit MyColor(QObject *parent = nullptr);
-    static MyColor *m_instance;
+    explicit FudyColor(QObject *parent = nullptr);
+    static FudyColor *m_instance;
 
 public:
     static QObject* createSingletonInstance(QQmlEngine *engine,  QJSEngine *scriptEngine);
@@ -67,4 +67,4 @@ private:
     const QRgb m_fontColor3 = 0xFFDE00;
 };
 
-#endif // MYCOLOR_H
+#endif // FUDYCOLOR_H

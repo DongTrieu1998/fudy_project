@@ -2,10 +2,15 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import Fudy.style.singleton 1.0
+import note_screen 1.0
+import plan_screen 1.0
+import todo_screen 1.0
+import workspace_screen 1.0
 
 Item {
 	id: root
-	anchors.fill: parent
+	width: 800
+	height: 658
 
 	Image {
 		id: iconImage
@@ -49,10 +54,10 @@ Item {
 				onClicked: {
 					switch(model.name)
 					{
-					case "NOTE" : internal.openApplication("D:/TEST/fudy_project/fudy/NoteScreen/my/plugin/example/NoteScreen.qml"); break
-					case "PLAN" : internal.openApplication("qrc:/PlanScreen.qml"); break
-					case "WORKSPACE" : internal.openApplication("qrc:/WorkSpace.qml"); break
-					case "TODO" : internal.openApplication("qrc:/TodoScreen.qml"); break;
+					case "NOTE" : internal.openApplication(noteScreenView); break
+					case "PLAN" : internal.openApplication(planScreenView); break
+					case "WORKSPACE" : internal.openApplication(workspaceScreenView); break
+					case "TODO" : internal.openApplication(todoScreenView); break;
 					default :internal.openApplication("")
 					}
 				}
@@ -61,6 +66,7 @@ Item {
 
 	}
 
+	//TODO: Remove to C++ model in next ticket
 	ListModel {
 		id: buttonModel
 		ListElement {
@@ -77,11 +83,25 @@ Item {
 		}
 	}
 
+	NoteScreen {
+		id: noteScreenView
+	}
+	PlanScreen {
+		id: planScreenView
+	}
+	WorkspaceScreen {
+		id: workspaceScreenView
+	}
+	TodoScreen {
+		id: todoScreenView
+	}
+	//ENDTODO
+
 	QtObject {
 		id: internal
 
-		function openApplication(url) {
-			root.parent.push(url)
+		function openApplication(item) {
+			root.parent.push(item)
 		}
 	}
 }
