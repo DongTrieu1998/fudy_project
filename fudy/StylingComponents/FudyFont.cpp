@@ -39,7 +39,7 @@ QFont prepareFont(const QString &family,
 
 QFont FudyFont::text1() const
 {
-    QFont font = prepareFont(m_textFont, 9);
+    QFont font = prepareFont(m_textFont, 16);
     return font;
 }
 
@@ -57,7 +57,7 @@ QFont FudyFont::keySmall() const
 
 QFont FudyFont::keyMedium() const
 {
-    QFont font = prepareFont(m_keyFont, 9);
+    QFont font = prepareFont(m_keyFont, 20);
     return font;
 }
 
