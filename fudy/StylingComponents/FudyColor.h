@@ -20,6 +20,7 @@ class FudyColor : public QObject
     Q_PROPERTY(QColor layer2 READ layer2 CONSTANT)
     Q_PROPERTY(QColor layer3 READ layer3 CONSTANT)
     Q_PROPERTY(QColor layer4 READ layer4 CONSTANT)
+    Q_PROPERTY(QColor layer5 READ layer5 CONSTANT)
 
     Q_PROPERTY(QColor fontColor1 READ fontColor1 CONSTANT)
     Q_PROPERTY(QColor fontColor2 READ fontColor2 CONSTANT)
@@ -42,6 +43,7 @@ public:
     QColor layer2() const;
     QColor layer3() const;
     QColor layer4() const;
+    QColor layer5() const;
 
     QColor fontColor1() const;
 
@@ -61,6 +63,7 @@ private:
     const QRgb m_layer2 = 0x528DCB;
     const QRgb m_layer3 = 0xFFDE00;
     const QRgb m_layer4 = 0xD9D9D9;
+    const QRgb m_layer5 = 0x000000;
 
     const QRgb m_fontColor1 = 0xFFFFFF;
     const QRgb m_fontColor2 = 0x000000;

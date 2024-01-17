@@ -65,6 +65,11 @@ QColor FudyColor::layer4() const
     return QColor::fromRgb(m_layer4);
 }
 
+QColor FudyColor::layer5() const
+{
+    return QColor::fromRgb(m_layer5);
+}
+
 QColor FudyColor::fontColor1() const
 {
     return QColor::fromRgb(m_fontColor1);

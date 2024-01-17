@@ -59,7 +59,7 @@ ApplicationWindow {
 		}
 	}
 
-	MenuBar {
+	FudyMenuBar {
 		id: menuBar
 		onIconClicked: stackView.pop()
 		isShownMenuBar: stackView.depth == 1 ? false : true
