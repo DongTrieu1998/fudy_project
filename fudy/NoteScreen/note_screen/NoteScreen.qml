@@ -1,6 +1,8 @@
 import QtQuick 2.15
+import QtQuick.Layouts 1.15
 
 import Fudy.style.singleton 1.0
+import note_screen 1.0
 
 Component {
 	id: root
@@ -30,26 +32,42 @@ Component {
 			anchors.top: header.bottom
 			clip: true
 
-			model: 10
+			model: StickNoteModel
+
 			delegate: Rectangle {
 				id: delegate
+
 				width: noteScreenListView.width
 				height: 102
 				color: FudyColor.layer2
 				border.width: 1
 				border.color: FudyColor.layer5
 
-				Image {
-					id: checkbox
-					width: 30
-					height: 30
-					anchors {
-						left: delegate.left
-						leftMargin: 18
-						verticalCenter: delegate.verticalCenter
+				RowLayout {
+					width: parent.width
+					height: parent.height
+
+					Image {
+						id: checkbox
+						Layout.preferredWidth : 30
+						Layout.preferredHeight: 30
+						Layout.leftMargin: 18
+						fillMode: Image.PreserveAspectFit
+						source: model.enable ? "qrc:/image/checkbox (1).svg" : "qrc:/image/square-small.svg"
+
+						MouseArea {
+							anchors.fill: parent
+							onClicked: {
+								StickNoteModel.appendItem()
+							}
+						}
 					}
-					fillMode: Image.PreserveAspectFit
-					source: "qrc:/image/checkbox.svg"
+
+					TextEdit {
+						Layout.fillWidth: true
+						font: FudyFont.text1
+						text: model.noteText
+					}
 				}
 			}
 		}
