@@ -22,6 +22,8 @@ add_library(
     ${CMAKE_CURRENT_LIST_DIR}/plugin.qmltypes
 
     ${PLUGIN_RESOURCES}
+    StickNoteModel.h StickNoteModel.cpp
+    StickNoteController.h StickNoteController.cpp
     # Plugin resources file
 )
 

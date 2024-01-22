@@ -1,7 +1,3 @@
 #include "NoteScreen.h"
 
-NoteScreen::NoteScreen(QObject *parent)
-    : QObject{parent}
-{
-
-}
+NoteScreen::NoteScreen(QObject *parent) : QObject{parent} {}

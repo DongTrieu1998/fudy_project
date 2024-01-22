@@ -4,9 +4,9 @@
 
 class NoteScreen : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit NoteScreen(QObject *parent = nullptr);
+	explicit NoteScreen(QObject *parent = nullptr);
 
 signals:
 
