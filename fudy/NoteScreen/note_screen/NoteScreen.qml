@@ -14,14 +14,19 @@ Component {
 			height: 55
 			border.width: 2
 			border.color: FudyColor.layer5
-			color: FudyColor.layer2
+			color: FudyColor.layer3
 
 			Text {
 				id: headerContent
 				anchors.centerIn: parent
 				font: FudyFont.keyMedium
-				color: FudyColor.fontColor1
-				text: qsTr("ALL YOUR NOTE")
+				color: FudyColor.fontColor2
+				text: qsTr("Add new")
+			}
+
+			MouseArea {
+				anchors.fill: parent
+				onClicked: noteScreenListView.model.appendItem()
 			}
 		}
 
@@ -58,15 +63,16 @@ Component {
 						MouseArea {
 							anchors.fill: parent
 							onClicked: {
-								StickNoteModel.appendItem()
+								model.enable = !model.enable
 							}
 						}
 					}
 
-					TextEdit {
+					TextInput {
 						Layout.fillWidth: true
 						font: FudyFont.text1
 						text: model.noteText
+						onEditingFinished: console.log("Fudy Debug NoteScreen.qml " + index)
 					}
 				}
 			}
