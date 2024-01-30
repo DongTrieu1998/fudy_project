@@ -18,5 +18,6 @@
         <file>font/Italianno-Regular.ttf</file>
         <file>font/Itim-Regular.ttf</file>
         <file>font/Jua-Regular.ttf</file>
+        <file>image/remove-circle.svg</file>
     </qresource>
 </RCC>
