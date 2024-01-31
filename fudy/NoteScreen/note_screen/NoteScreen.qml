@@ -41,6 +41,7 @@ Component {
 
 			delegate: Rectangle {
 				id: delegate
+				property variant itemData: model
 
 				width: noteScreenListView.width
 				height: 102
@@ -64,15 +65,33 @@ Component {
 							anchors.fill: parent
 							onClicked: {
 								model.enable = !model.enable
+								noteScreenListView.currentIndex = index
+								console.log("Fudy debug : " + noteScreenListView.currentIndex)
 							}
 						}
 					}
 
-					TextInput {
-						Layout.fillWidth: true
-						font: FudyFont.text1
-						text: model.noteText
-						onEditingFinished: console.log("Fudy Debug NoteScreen.qml " + index)
+//					TextInput {
+//						Layout.fillWidth: true
+//						font: FudyFont.text1
+//						wrapMode: TextInput.Wrap
+//						text: model.header
+//					}
+
+					Image {
+						id: removeIcon
+						Layout.preferredWidth : 30
+						Layout.preferredHeight: 30
+						Layout.rightMargin: 18
+						fillMode: Image.PreserveAspectFit
+						source: "qrc:/image/remove-circle.svg"
+
+						MouseArea {
+							anchors.fill: parent
+							onClicked: {
+								noteScreenListView.model.removedItemAt(index)
+							}
+						}
 					}
 				}
 			}
@@ -89,6 +108,8 @@ Component {
 
 			Text {
 				id: footerContent
+
+
 				anchors.centerIn: parent
 				font: FudyFont.keyMedium
 				color: FudyColor.fontColor2
@@ -121,7 +142,7 @@ Component {
 				color: FudyColor.fontColor2
 				focus: true
 				wrapMode: TextEdit.Wrap
-				text: "Note that the TextEdit does not implement scrolling, following the cursor, or other behaviors specific to a look-and-feel. For example, to add flickable scrolling that follows the cursor:"
+				text: noteScreenListView.currentItem.itemData.noteText
 			}
 
 		}
