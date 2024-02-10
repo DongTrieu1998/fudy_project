@@ -100,7 +100,7 @@ bool StickNoteModel::setItemAt(int index, const StickItem& item)
 	return true;
 }
 
-void StickNoteModel::removedItemAt(int index)
+void StickNoteModel::removeItemAt(int index)
 {
 	beginRemoveRows(QModelIndex(), index, index);
 
@@ -121,7 +121,7 @@ void StickNoteModel::appendItem()
 	endInsertRows();
 }
 
-void StickNoteModel::removedCompletedItems()
+void StickNoteModel::removeCompletedItems()
 {
 	for(int i = 0; i < m_items.count();)
 	{

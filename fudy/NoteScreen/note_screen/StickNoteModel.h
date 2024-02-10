@@ -32,12 +32,13 @@ public:
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	virtual QHash<int, QByteArray> roleNames() const override;
 
-	Q_INVOKABLE bool setItemAt(int index, const StickItem& item);
-	Q_INVOKABLE void removedItemAt(int index);
-	Q_INVOKABLE void removedCompletedItems();
+	Q_INVOKABLE void removeItemAt(int index);
+	Q_INVOKABLE void removeCompletedItems();
 	Q_INVOKABLE void appendItem();
 
 private:
+	bool setItemAt(int index, const StickItem& item);
+
 	QVector<StickItem> m_items;
 };
 
