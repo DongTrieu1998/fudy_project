@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QDir>
 
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
