@@ -3,7 +3,6 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
 import Fudy.style.singleton 1.0
-import my.plugin.example 1.0
 
 ApplicationWindow {
 	id: root
