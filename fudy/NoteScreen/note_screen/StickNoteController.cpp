@@ -18,5 +18,5 @@ void StickNoteController::resetAllItems()
 		return;
 	}
 
-	m_model->removedCompletedItems();
+	m_model->removeCompletedItems();
 }
