@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
 
 import Fudy.style.singleton 1.0
 import note_screen 1.0
@@ -65,18 +66,25 @@ Component {
 							anchors.fill: parent
 							onClicked: {
 								model.enable = !model.enable
-								noteScreenListView.currentIndex = index
-								console.log("Fudy debug : " + noteScreenListView.currentIndex)
 							}
 						}
 					}
 
-//					TextInput {
-//						Layout.fillWidth: true
-//						font: FudyFont.text1
-//						wrapMode: TextInput.Wrap
-//						text: model.header
-//					}
+					TextField {
+						Layout.fillWidth: true
+						font: FudyFont.text1
+						color: FudyColor.fontColor2
+						wrapMode: TextInput.Wrap
+						text: model.header
+
+						onPressed: {
+							noteScreenListView.currentIndex = index
+						}
+
+						onEditingFinished: {
+							model.header = text
+						}
+					}
 
 					Image {
 						id: removeIcon
@@ -145,6 +153,30 @@ Component {
 				text: noteScreenListView.currentItem.itemData.noteText
 			}
 
+			Button {
+				id: saveButton
+				anchors {
+					top: contentOfNote.bottom
+					topMargin: 20
+					horizontalCenter: contentOfNote.horizontalCenter
+				}
+				background: Rectangle {
+					implicitWidth: 200
+					implicitHeight: 55
+					opacity: enabled ? 1 : 0.3
+					border.color: FudyColor.layer5
+					color: FudyColor.layer3
+				}
+
+				Text {
+					anchors.centerIn: parent
+					font: FudyFont.keyMedium
+					color: FudyColor.fontColor2
+					text: qsTr("Save")
+				}
+
+				onClicked: noteScreenListView.currentItem.itemData.noteText = contentOfNote.text
+			}
 		}
 	}
 }
