@@ -2,44 +2,43 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import Fudy.style.singleton 1.0
-import note_screen 1.0
-import plan_screen 1.0
-import todo_screen 1.0
-import workspace_screen 1.0
 
 Item {
 	id: root
-	width: 800
-	height: 658
+	anchors.fill: parent
 
-	Image {
-		id: iconImage
+	Text {
+		id: title
 		anchors {
 			top: root.top
-			horizontalCenter: root.horizontalCenter
-			topMargin: 34
+			left: root.left
+			leftMargin: 69
 		}
-		width: 120
-		height: 125
-		source: "qrc:/image/icons_fudy.png"
+
+		font: FudyFont.heading1
+		horizontalAlignment: Text.AlignHCenter
+		color: FudyColor.fontColor2
+
+		text: qsTr("Fudy")
 	}
 
 	ListView {
 		id: buttonListview
-		width: 477
-		height: 383
-		anchors{
-			top: iconImage.bottom
-			topMargin: 29
-			horizontalCenter: root.horizontalCenter
+		width: 348
+		height: 320
+		anchors {
+			top: title.bottom
+			topMargin: 18
+			left: root.left
+			leftMargin: 56
 		}
-		spacing: 25
+		spacing: 16
 
 		model: buttonModel
 		delegate: Rectangle {
-			width: 477
-			height: 77
-			radius: 30
+			width: 348
+			height: 68
+			radius: 8
 			color: FudyColor.layer1
 			Text {
 				id: buttonName
@@ -52,18 +51,18 @@ Item {
 			MouseArea {
 				anchors.fill: parent
 				onClicked: {
-					switch(model.name)
-					{
-					case "NOTE" : internal.openApplication(noteScreenView); break
-					case "PLAN" : internal.openApplication(planScreenView); break
-					case "WORKSPACE" : internal.openApplication(workspaceScreenView); break
-					case "TODO" : internal.openApplication(todoScreenView); break;
-					default :internal.openApplication("")
-					}
+					internal.openApplication("qrc:/NoteScreen/NoteScreen.qml");
 				}
 			}
 		}
 
+	}
+
+	Image {
+		id: stickNoteImg
+		anchors.left: root.left
+		anchors.leftMargin: 316
+		source: "qrc:/image/stick_note_3d.png"
 	}
 
 	//TODO: Remove to C++ model in next ticket
@@ -82,20 +81,6 @@ Item {
 			name: qsTr("TODO")
 		}
 	}
-
-	NoteScreen {
-		id: noteScreenView
-	}
-	PlanScreen {
-		id: planScreenView
-	}
-	WorkspaceScreen {
-		id: workspaceScreenView
-	}
-	TodoScreen {
-		id: todoScreenView
-	}
-	//ENDTODO
 
 	QtObject {
 		id: internal

@@ -27,34 +27,40 @@ ApplicationWindow {
 
 		Image {
 			id: iconImage
-			width: 200
-			height: 208
+			width: 300
+			height: 300
 			anchors {
 				top: welcomeScreen.top
 				topMargin: 92
-				left: welcomeScreen.left
-				leftMargin: 300
+				horizontalCenter: welcomeScreen.horizontalCenter
 			}
-
-			source: "qrc:/image/icons_fudy.png"
+			source: "qrc:/image/fudy_main_icon.png"
 		}
 
 		Text {
 			id: text
-			width: 280
+			width: 309
 			height: 110
 			anchors {
 				top: welcomeScreen.top
-				topMargin: 320
+				topMargin: 346
 				left: welcomeScreen.left
-				leftMargin: 243
+				leftMargin: 230
 			}
 
 			font: FudyFont.heading1
 			horizontalAlignment: Text.AlignHCenter
-			color: FudyColor.fontColor3
+			color: FudyColor.fontColor2
 
 			text: qsTr("Fudy")
+		}
+
+		MouseArea {
+			anchors.fill: parent
+			onClicked: {
+				welcomeScreen.visible = false;
+				stackView.visible = true;
+			}
 		}
 	}
 
@@ -82,17 +88,4 @@ ApplicationWindow {
 			}
 		}
 	}
-
-	Timer {
-		id: timer
-		interval: 2000
-		running: true
-		repeat: false
-		onTriggered: {
-			welcomeScreen.visible = false;
-			stackView.visible = true;
-		}
-	}
-
-	Component.onCompleted: timer.start()
 }

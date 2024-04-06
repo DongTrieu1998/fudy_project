@@ -4,7 +4,7 @@
 
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
-#include "NoteScreen/note_screen/StickNoteModel.h"
+#include "NoteScreen/StickNoteModel.h"
 
 int main(int argc, char *argv[])
 {
@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
 	                                   0,
 	                                   "FudyFont",
 	                                   FudyFont::createSingletonInstance);
+
+	StickNoteModel stickNoteModel;
+	engine.rootContext()->setContextProperty("StickNoteModel", &stickNoteModel);
 
 	engine.addImportPath("./NoteScreen");
 	engine.addImportPath("./PlanScreen");

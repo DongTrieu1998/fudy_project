@@ -22,6 +22,7 @@ void FudyFont::addFontPath()
     QFontDatabase::addApplicationFont(":/font/Italianno-Regular.ttf");
     QFontDatabase::addApplicationFont(":/font/Itim-Regular.ttf");
     QFontDatabase::addApplicationFont(":/font/Jua-Regular.ttf");
+	QFontDatabase::addApplicationFont(":/font/Imprima-Regular.ttf");
 }
 
 QFont prepareFont(const QString &family,
@@ -31,7 +32,7 @@ QFont prepareFont(const QString &family,
     QFont font;
     font.setFamily(family);
     font.setPointSizeF(fontSizeF);
-    font.setWeight(weight);
+//	font.setWeight(QFont::weight());
     font.setHintingPreference(QFont::PreferNoHinting);
 
     return font;
@@ -39,14 +40,32 @@ QFont prepareFont(const QString &family,
 
 QFont FudyFont::text1() const
 {
-    QFont font = prepareFont(m_textFont, 16);
-    return font;
+	QFont font = prepareFont(m_textFont1, 16);
+	return font;
+}
+
+QFont FudyFont::text2() const
+{
+	QFont font = prepareFont(m_textFont2, 20);
+	return font;
+}
+
+QFont FudyFont::text3() const
+{
+	QFont font = prepareFont(m_textFont2, 12);
+	return font;
 }
 
 QFont FudyFont::heading1() const
 {
-    QFont font = prepareFont(m_headingFont, 96);
-    return font;
+	QFont font = prepareFont(m_headingFont, 128);
+	return font;
+}
+
+QFont FudyFont::headingPopup() const
+{
+	QFont font = prepareFont(m_textFont2, 16);
+	return font;
 }
 
 QFont FudyFont::keySmall() const

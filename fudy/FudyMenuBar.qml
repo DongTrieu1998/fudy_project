@@ -1,6 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
+import "NoteScreen/Component"
+import "Setting"
+
 import Fudy.style.singleton 1.0
 
 Rectangle {
@@ -8,7 +11,7 @@ Rectangle {
 	property bool isShownMenuBar: false
 	signal iconClicked
 
-	width: 800
+	width: parent.width
 	height: 58
 	color: FudyColor.layer3
 	visible: isShownMenuBar
@@ -31,29 +34,28 @@ Rectangle {
 
 	RowLayout {
 		id: toolIcons
-		width: 295
-		height: 30
+		spacing: 17
 		anchors {
 			verticalCenter: parent.verticalCenter
 			right: parent.right
 		}
 		MenuBarItem {
-			sourceUrl: "qrc:/image/home.svg"
-		}
-		MenuBarItem {
-			sourceUrl: "qrc:/image/search.svg"
-		}
-		MenuBarItem {
-			sourceUrl: "qrc:/image/plus.svg"
-		}
-		MenuBarItem {
-			sourceUrl: "qrc:/image/bell.svg"
-		}
-		MenuBarItem {
 			sourceUrl: "qrc:/image/settings.svg"
+			MouseArea {
+				anchors.fill: parent
+
+				onClicked: {
+					settingPopup.open()
+				}
+			}
 		}
 		MenuBarItem {
 			sourceUrl: "qrc:/image/menu-dots-vertical.svg"
 		}
+	}
+
+	SettingPopup {
+		id: settingPopup
+		anchors.centerIn: parent
 	}
 }

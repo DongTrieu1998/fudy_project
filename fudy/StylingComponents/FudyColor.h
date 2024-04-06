@@ -52,7 +52,7 @@ public:
     QColor fontColor3() const;
 
 private:
-    const QRgb m_background1 = 0x00017A;
+	const QRgb m_background1 = 0xFEC8D8;
     const QRgb m_background2 = 0x1873D3;
     const QRgb m_background3 = 0xFFFFB1;
     const QRgb m_background4 = 0x619DDD;
@@ -61,7 +61,7 @@ private:
 
     const QRgb m_layer1 = 0x619DDD;
     const QRgb m_layer2 = 0x528DCB;
-    const QRgb m_layer3 = 0xFFDE00;
+	const QRgb m_layer3 = 0xF8CBB4;
     const QRgb m_layer4 = 0xD9D9D9;
     const QRgb m_layer5 = 0x000000;
 
