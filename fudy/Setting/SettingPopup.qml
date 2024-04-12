@@ -5,45 +5,80 @@ import QtQuick.Controls 2.15
 import "../NoteScreen/Component"
 
 FudyPopup {
-	id: settingPopup
-	width: 400
-	height: 650
-	rightPadding: 12
+	id: root
+	implicitWidth: 400
 
 	headerText: qsTr("Setting")
 
-	contentItem: ScrollView {
-		id: popupContentItem
+	contentComponent: ColumnLayout {
+		ScrollView {
+			id: popupContentItem
 
-		width: 325
-		height: 1000
-		contentWidth: columnLayout.width
-		contentHeight: columnLayout.height
-		clip: true
+			Layout.preferredWidth: 400
+			Layout.preferredHeight: 560
 
-		ColumnLayout {
-			id: columnLayout
-			width: parent.width
-			spacing: 14
+			contentWidth: parent.implicitWidth
+			contentHeight: columnLayout.implicitHeight
 
-			SyncSettingItem {
-				id: syncSettingItem
-				Layout.fillWidth: true
-				Layout.topMargin: 14
+			clip: true
+
+			ColumnLayout {
+				id: columnLayout
+				anchors.fill: parent
+				spacing: 14
+
+				SyncSettingItem {
+					id: syncSettingItem
+					Layout.leftMargin: 16
+					Layout.fillWidth: true
+				}
+
+				SplitterItem {
+					Layout.leftMargin: 16
+					Layout.rightMargin: 16
+					Layout.fillWidth: true
+					Layout.alignment: Qt.AlignHCenter
+				}
+
+				GeneralSetting {
+					id: generalSetting
+					Layout.leftMargin: 16
+					Layout.fillWidth: true
+				}
+
+				SplitterItem {
+					Layout.leftMargin: 16
+					Layout.rightMargin: 16
+					Layout.fillWidth: true
+					Layout.alignment: Qt.AlignHCenter
+				}
+
+				ThemeSetting {
+					id: themeSetting
+					Layout.leftMargin: 16
+					Layout.fillWidth: true
+				}
+
+				SplitterItem {
+					Layout.leftMargin: 16
+					Layout.rightMargin: 16
+					Layout.fillWidth: true
+					Layout.alignment: Qt.AlignHCenter
+				}
+
+				LanguageSetting {
+					id: languageSetting
+					Layout.leftMargin: 16
+					Layout.fillWidth: true
+				}
+
+				SplitterItem {
+					Layout.leftMargin: 16
+					Layout.rightMargin: 16
+					Layout.fillWidth: true
+					Layout.alignment: Qt.AlignHCenter
+				}
 			}
-
-			SplitterItem {
-				Layout.fillWidth: true
-				Layout.alignment: Qt.AlignHCenter
-			}
-
-			//			Rectangle {
-			//				id: headerInput
-			//				Layout.alignment: Qt.AlignHCenter
-			//				Layout.fillWidth: true
-			//				Layout.preferredHeight: 1000
-			//			}
 		}
-
 	}
 }

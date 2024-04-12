@@ -48,14 +48,13 @@ Rectangle {
 					settingPopup.open()
 				}
 			}
+
+			SettingPopup {
+				id: settingPopup
+			}
 		}
 		MenuBarItem {
 			sourceUrl: "qrc:/image/menu-dots-vertical.svg"
 		}
-	}
-
-	SettingPopup {
-		id: settingPopup
-		anchors.centerIn: parent
 	}
 }

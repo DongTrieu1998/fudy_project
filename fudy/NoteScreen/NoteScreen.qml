@@ -34,7 +34,6 @@ Item {
 
 			NotePopup {
 				id: notePopup
-				anchors.centerIn: parent
 			}
 
 			MouseArea {

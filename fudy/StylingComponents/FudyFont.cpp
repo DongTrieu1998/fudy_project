@@ -32,7 +32,7 @@ QFont prepareFont(const QString &family,
     QFont font;
     font.setFamily(family);
     font.setPointSizeF(fontSizeF);
-//	font.setWeight(QFont::weight());
+	font.setWeight(weight);
     font.setHintingPreference(QFont::PreferNoHinting);
 
     return font;
@@ -62,9 +62,15 @@ QFont FudyFont::heading1() const
 	return font;
 }
 
+QFont FudyFont::heading2() const
+{
+	QFont font = prepareFont(m_textFont2, 14);
+	return font;
+}
+
 QFont FudyFont::headingPopup() const
 {
-	QFont font = prepareFont(m_textFont2, 16);
+	QFont font = prepareFont(m_textFont2, 16); //Figma: 24
 	return font;
 }
 

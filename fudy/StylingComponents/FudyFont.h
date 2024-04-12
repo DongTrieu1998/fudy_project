@@ -14,6 +14,7 @@ class FudyFont : public QObject
 	Q_PROPERTY(QFont text2 READ text1 CONSTANT)
 	Q_PROPERTY(QFont text3 READ text3 CONSTANT)
 	Q_PROPERTY(QFont heading1 READ heading1 CONSTANT)
+	Q_PROPERTY(QFont heading2 READ heading2 CONSTANT)
 	Q_PROPERTY(QFont headingPopup READ headingPopup CONSTANT)
 	Q_PROPERTY(QFont keySmall READ keySmall CONSTANT)
 	Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT)
@@ -30,6 +31,7 @@ public:
 	QFont text3() const;
 
 	QFont heading1() const;
+	QFont heading2() const;
 	QFont headingPopup() const;
 
 	QFont keySmall() const;

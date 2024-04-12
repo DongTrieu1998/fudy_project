@@ -10,10 +10,10 @@ Popup {
 	property string headerText: ""
 	property alias contentComponent: contentLoader.sourceComponent
 
-	anchors.centerIn: Overlay.overlay
 	dim: true
 	modal: true
 	focus: true
+	anchors.centerIn: Overlay.overlay
 	closePolicy: Popup.NoAutoClose
 
 	background: Rectangle {
@@ -92,7 +92,7 @@ Popup {
 		id: internal
 
 		property int headerHeight: 50
-		property int popupRadius: 12
+		property int popupRadius: 8
 
 		property string iconSource: "qrc:/image/exit.svg"
 

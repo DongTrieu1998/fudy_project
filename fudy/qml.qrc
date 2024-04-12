@@ -12,5 +12,12 @@
         <file>Setting/SettingPopup.qml</file>
         <file>Setting/SyncSettingItem.qml</file>
         <file>NoteScreen/Component/SplitterItem.qml</file>
+        <file>Setting/SettingItem.qml</file>
+        <file>Setting/GeneralSetting.qml</file>
+        <file>NoteScreen/Component/Toggle.qml</file>
+        <file>NoteScreen/Component/TextWithToggle.qml</file>
+        <file>Setting/ThemeSetting.qml</file>
+        <file>NoteScreen/Component/RadioButton.qml</file>
+        <file>Setting/LanguageSetting.qml</file>
     </qresource>
 </RCC>
