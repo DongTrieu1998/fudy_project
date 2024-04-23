@@ -1,11 +1,12 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QIcon>
 
 #include "FudyUtils.h"
+#include "NoteScreen/StickNoteModel.h"
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
-#include "NoteScreen/StickNoteModel.h"
 
 int main(int argc, char *argv[])
 {
@@ -25,6 +26,8 @@ int main(int argc, char *argv[])
 	                                   0,
 	                                   "FudyFont",
 	                                   FudyFont::createSingletonInstance);
+	app.setWindowIcon(QIcon(":/image/icons_fudy.png"));
+
 	//TODO: Create a WARNING popup for this case
 	utils::createDatabase(app); //This function returns BOOL value
 

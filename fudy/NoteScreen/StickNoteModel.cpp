@@ -1,142 +1,199 @@
 #include "StickNoteModel.h"
+
 #include <QDebug>
 
 StickNoteModel::StickNoteModel(QObject* parent)
     : QAbstractListModel{parent}
 {
-	m_items.append(
-	    {true, QStringLiteral("Clean the house"), QStringLiteral("Clean the house content")});
-	m_items.append(
-	    {true,
-	     QStringLiteral("Wash the car"),
-	     QStringLiteral("Note that the TextEdit does not implement scrolling, following the "
-	                    "cursor, or other behaviors specific to a look-and-feel. For example, to "
-	                    "add flickable scrolling that follows the cursor:")});
+	QSqlQuery query;
+	query.exec("SELECT * FROM fudy");
+
+	while(query.next())
+	{
+		StickItem item;
+		item.id = query.value("id").toInt();
+		item.enable = query.value("enable").toBool();
+		item.header = query.value("header").toString();
+		item.noteText = query.value("noteText").toString();
+		item.visible = query.value("visible").toBool();
+		item.xaxis = query.value("xaxis").toInt();
+		item.yaxis = query.value("yaxis").toInt();
+
+		// Thêm dữ liệu vào QVector
+		m_items.append(item);
+	}
 }
 
 int StickNoteModel::rowCount(const QModelIndex& parent) const
 {
 	if(parent.isValid())
+	{
 		return 0;
+	}
 	return m_items.size();
 }
 
 QVariant StickNoteModel::data(const QModelIndex& index, int role) const
 {
 	if(!index.isValid())
+	{
 		return QVariant();
+	}
 
 	const StickItem item = m_items.at(index.row());
 	switch(role)
 	{
+	case IdRole:
+		return QVariant(item.id);
+		break;
 	case EnableRole:
 		return QVariant(item.enable);
 		break;
 	case HeaderRole:
-		return QVariant(item.headerText);
+		return QVariant(item.header);
 		break;
 	case NoteTextRole:
 		return QVariant(item.noteText);
+		break;
+	case Visible:
+		return QVariant(item.visible);
+		break;
+	case XAxis:
+		return QVariant(item.xaxis);
+		break;
+	case YAxis:
+		return QVariant(item.yaxis);
 		break;
 	}
 	return QVariant();
 }
 
-bool StickNoteModel::setData(const QModelIndex& index, const QVariant& value, int role)
-{
-	StickItem item = m_items.at(index.row());
-	switch(role)
-	{
-	case EnableRole:
-		item.enable = value.toBool();
-		break;
-	case HeaderRole:
-		item.headerText = value.toString();
-		break;
-	case NoteTextRole:
-		item.noteText = value.toString();
-		break;
-	}
-
-	if(setItemAt(index.row(), item))
-	{
-		emit dataChanged(index, index, QVector<int>() << role);
-		return true;
-	}
-	return false;
-}
-
-Qt::ItemFlags StickNoteModel::flags(const QModelIndex& index) const
-{
-	if(!index.isValid())
-		return Qt::NoItemFlags;
-	return Qt::ItemIsEditable;
-}
-
 QHash<int, QByteArray> StickNoteModel::roleNames() const
 {
 	QHash<int, QByteArray> roles;
+	roles[IdRole] = "id";
 	roles[EnableRole] = "enable";
 	roles[HeaderRole] = "header";
 	roles[NoteTextRole] = "noteText";
+	roles[Visible] = "visible";
+	roles[XAxis] = "xaxis";
+	roles[YAxis] = "yaxis";
 	return roles;
 }
 
-bool StickNoteModel::setItemAt(int index, const StickItem& item)
+bool StickNoteModel::removeItemAt(int index)
 {
-	if(index < 0 || index >= m_items.size())
-	{
-		return false;
-	}
+	QSqlQuery query;
+	query.prepare("delete from fudy where id = ?");
+	query.addBindValue(m_items[index].id);
 
-	const StickItem& oldItem = m_items.at(index);
-	if(item.enable == oldItem.enable && item.noteText == oldItem.noteText &&
-	   item.headerText == oldItem.headerText)
-	{
-		return false;
-	}
-
-	m_items[index] = item;
-	return true;
-}
-
-void StickNoteModel::removeItemAt(int index)
-{
 	beginRemoveRows(QModelIndex(), index, index);
 
-	qDebug() << "Fudy Debug StickNoteModel::removedCompletedItems : index : " << index;
 	m_items.removeAt(index);
 
 	endRemoveRows();
+
+	return query.exec();
 }
 
-void StickNoteModel::appendItem()
+bool StickNoteModel::appendNewItem()
 {
 	beginInsertRows(QModelIndex(), rowCount(), rowCount());
 
 	StickItem item;
 	item.enable = false;
+	item.header = "Task to do";
+	item.noteText = "";
+	item.visible = false;
+	item.xaxis = 0;
+	item.yaxis = 0;
 	m_items.append(item);
 
 	endInsertRows();
+
+	QSqlQuery query;
+	query.prepare(
+	    "insert into fudy (enable,header,noteText,visible,xaxis,yaxis) values (?,?,?,?,?,?)");
+	query.addBindValue(item.enable ? 1 : 0);
+	query.addBindValue(item.header);
+	query.addBindValue(NULL);
+	query.addBindValue(item.visible ? 1 : 0);
+	query.addBindValue(item.xaxis);
+	query.addBindValue(item.yaxis);
+
+	return query.exec();
 }
 
-void StickNoteModel::removeCompletedItems()
+bool StickNoteModel::removeCompletedItems()
 {
-	for(int i = 0; i < m_items.count();)
-	{
-		if(m_items.at(i).enable)
-		{
-			beginRemoveRows(QModelIndex(), rowCount() - 1, rowCount() - 1);
+	beginResetModel();
+	m_items.clear();
+	endResetModel();
 
-			qDebug() << "Fudy Debug StickNoteModel::removedCompletedItems : i : " << i;
-			m_items.removeAt(i);
+	QSqlQuery query;
+	query.prepare("DELETE FROM fudy");
 
-			endRemoveRows();
-		}
-		else
-		{
-			i++;
-		}
-	}
+	return query.exec();
+}
+
+bool StickNoteModel::updateEnabled(int id, bool enabled)
+{
+	m_items[id].enable = enabled;
+
+	QSqlQuery query;
+	query.prepare("update fudy set enable = ? where id = ?");
+	query.addBindValue(enabled ? 1 : 0);
+	query.addBindValue(m_items.at(id).id);
+
+	return query.exec();
+}
+
+bool StickNoteModel::updateHeader(int id, QString header)
+{
+	m_items[id].header = header;
+
+	QSqlQuery query;
+	query.prepare("update fudy set header = ? where id = ?");
+	query.addBindValue(header);
+	query.addBindValue(m_items.at(id).id);
+
+	return query.exec();
+}
+
+bool StickNoteModel::updateNoteText(int id, QString notetext)
+{
+	m_items[id].noteText = notetext;
+
+	QSqlQuery query;
+	query.prepare("update fudy set notetext = ? where id = ?");
+	query.addBindValue(notetext);
+	query.addBindValue(m_items.at(id).id);
+
+	return query.exec();
+}
+
+bool StickNoteModel::updateVisible(int id, bool visible)
+{
+	m_items[id].visible = visible;
+
+	QSqlQuery query;
+	query.prepare("update fudy set visible = ? where id = ?");
+	query.addBindValue(visible ? 1 : 0);
+	query.addBindValue(m_items.at(id).id);
+
+	return query.exec();
+}
+
+bool StickNoteModel::updateAxis(int id, int xaxis, int yaxis)
+{
+	m_items[id].xaxis = xaxis;
+	m_items[id].yaxis = yaxis;
+
+	QSqlQuery query;
+	query.prepare("update fudy set xaxis = ?,yaxis = ? where id = ?");
+	query.addBindValue(xaxis);
+	query.addBindValue(yaxis);
+	query.addBindValue(m_items.at(id).id);
+
+	return query.exec();
 }

@@ -1,24 +1,47 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+
+import "NoteScreen/Component"
 
 import Fudy.style.singleton 1.0
 
 ApplicationWindow {
 	id: root
 	width: 800
-	height: 658
+	height: 643
 	minimumWidth: width
 	maximumWidth: width
 	minimumHeight: height
 	maximumHeight: height
 
+	flags: Qt.Window| Qt.FramelessWindowHint
+
+	color: "transparent"
 	visible: true
 	title: qsTr("Fudy Project")
 
 	background: Rectangle {
 		anchors.fill: parent
+		radius: 12
 		color: FudyColor.background1
+	}
+
+	menuBar: Loader {
+		id: menuBar
+		Layout.fillWidth: true
+		Layout.alignment: Qt.AlignTop
+
+		sourceComponent: FudyMenuBar {
+			onExitIconClicked: function() {
+				root.hide();
+			}
+
+			onFudyIconClicked: function() {
+				stackView.pop();
+			}
+		}
 	}
 
 	Item {
@@ -64,12 +87,6 @@ ApplicationWindow {
 		}
 	}
 
-	FudyMenuBar {
-		id: menuBar
-		onIconClicked: stackView.pop()
-		isShownMenuBar: stackView.depth == 1 ? false : true
-	}
-
 	StackView {
 		id: stackView
 		width: root.width
@@ -87,5 +104,24 @@ ApplicationWindow {
 				easing.type: Easing.OutCubic
 			}
 		}
+	}
+
+	FudyTrayIcon {
+		id: trayIcon
+
+		onShow: function() {
+			root.show();
+			root.raise();
+		}
+	}
+
+	QtObject {
+		id: internal
+
+		property int headerHeight: 35
+		property int radius: 8
+
+		property string iconSource: "qrc:/image/exit.svg"
+		property string fudyIconSource: "qrc:/image/icons_fudy.png"
 	}
 }

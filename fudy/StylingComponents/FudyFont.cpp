@@ -52,7 +52,7 @@ QFont FudyFont::text2() const
 
 QFont FudyFont::text3() const
 {
-	QFont font = prepareFont(m_textFont2, 12);
+	QFont font = prepareFont(m_textFont2, 10);
 	return font;
 }
 
@@ -70,7 +70,7 @@ QFont FudyFont::heading2() const
 
 QFont FudyFont::headingPopup() const
 {
-	QFont font = prepareFont(m_textFont2, 16); //Figma: 24
+	QFont font = prepareFont(m_textFont2, 12); //Figma: 24
 	return font;
 }
 

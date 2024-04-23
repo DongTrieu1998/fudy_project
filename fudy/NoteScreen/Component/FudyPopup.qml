@@ -92,9 +92,8 @@ Popup {
 		id: internal
 
 		property int headerHeight: 50
-		property int popupRadius: 8
+		property int popupRadius: 12
 
 		property string iconSource: "qrc:/image/exit.svg"
-
 	}
 }

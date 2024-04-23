@@ -9,38 +9,51 @@ import Fudy.style.singleton 1.0
 Rectangle {
 	id: root
 	property bool isShownMenuBar: false
-	signal iconClicked
+	signal exitIconClicked()
+	signal fudyIconClicked()
 
 	width: parent.width
-	height: 58
-	color: FudyColor.layer3
-	visible: isShownMenuBar
+	height: internal.headerHeight
+	radius: internal.radius
+	color: "#FF9AA2"
+
+	Rectangle {
+		width: parent.width
+		height: internal.radius
+		anchors.bottom: root.bottom
+		color: root.color
+	}
 
 	Image {
-		id: icon
-		x: 13
-		y: 13
-		width: 40
-		height: 37
-		source: "qrc:/image/icons_fudy.png"
+		id: fudyIcon
+		width: 25
+		height: 28
+		anchors {
+			left: root.left
+			leftMargin: 10
+			verticalCenter: root.verticalCenter
+		}
+		fillMode: Image.PreserveAspectFit
+		source: internal.fudyIconSource
 
 		MouseArea {
-			anchors.fill: icon
+			anchors.fill: fudyIcon
 			onClicked: {
-				iconClicked();
+				root.fudyIconClicked();
 			}
 		}
 	}
 
 	RowLayout {
 		id: toolIcons
-		spacing: 17
+		spacing: 15
 		anchors {
 			verticalCenter: parent.verticalCenter
 			right: parent.right
+			rightMargin: 15
 		}
 		MenuBarItem {
-			sourceUrl: "qrc:/image/settings.svg"
+			sourceUrl: internal.settingIconSource
 			MouseArea {
 				anchors.fill: parent
 
@@ -54,7 +67,25 @@ Rectangle {
 			}
 		}
 		MenuBarItem {
-			sourceUrl: "qrc:/image/menu-dots-vertical.svg"
+			sourceUrl: internal.exitIconSource
+			MouseArea {
+				anchors.fill: parent
+
+				onClicked: function() {
+					root.exitIconClicked();
+				}
+			}
 		}
+	}
+
+	QtObject {
+		id: internal
+
+		property int headerHeight: 35
+		property int radius: 8
+
+		property string exitIconSource: "qrc:/image/exit.svg"
+		property string settingIconSource: "qrc:/image/settings.svg"
+		property string fudyIconSource: "qrc:/image/icons_fudy.png"
 	}
 }

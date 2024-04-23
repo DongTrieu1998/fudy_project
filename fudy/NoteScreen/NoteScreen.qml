@@ -32,15 +32,10 @@ Item {
 				text: qsTr("Add new")
 			}
 
-			NotePopup {
-				id: notePopup
-			}
-
 			MouseArea {
 				anchors.fill: parent
 				onClicked: {
-					noteScreenListView.model.appendItem()
-					notePopup.open()
+					noteScreenListView.model.appendNewItem();
 				}
 			}
 		}
@@ -67,17 +62,35 @@ Item {
 
 				delegate: TaskItem {
 					id: delegateItem
-					enabled: model.enabled
+					taskIndex: index
+					enabled: model.enable
 					header: model.header
+					noteVisible: model.visible
+					xaxis: model.xaxis
+					yaxis: model.yaxis
 
 					onRemoveCurrentItem: {
 						noteScreenListView.model.removeItemAt(index)
 					}
-					onNoteTextEditted: {
-						model.enabled = enabled;
+					onEnabledEditted: function(enable) {
+						console.log(model.id)
+						noteScreenListView.model.updateEnabled(index, enable);
 					}
-					onHeaderEditted:  {
-						model.header = header;
+
+					onNoteTextEditted: {
+
+					}
+
+					onHeaderEditted: function(headerText) {
+						noteScreenListView.model.updateHeader(index, headerText);
+					}
+
+					onNoteVisibleUpdated: function(visible) {
+						noteScreenListView.model.updateVisible(index, visible);
+					}
+
+					onAxisUpdated: function(xaxis, yaxis){
+						noteScreenListView.model.updateAxis(index, xaxis, yaxis);
 					}
 				}
 			}
@@ -99,7 +112,14 @@ Item {
 				anchors.centerIn: parent
 				font: FudyFont.keyMedium
 				color: FudyColor.fontColor2
-				text: qsTr("Stick on your Screen")
+				text: qsTr("Delete All Items")
+			}
+
+			MouseArea {
+				anchors.fill: parent
+				onClicked: {
+					noteScreenListView.model.removeCompletedItems();
+				}
 			}
 		}
 	}

@@ -2,12 +2,18 @@
 #define STICKNOTEMODEL_H
 
 #include <QAbstractListModel>
+#include <QSqlQueryModel>
+#include <QSqlQuery>
 
 struct StickItem
 {
+	int id;
 	bool enable;
-	QString headerText;
+	QString header;
 	QString noteText;
+	bool visible;
+	int xaxis;
+	int yaxis;
 };
 
 class StickNoteModel : public QAbstractListModel
@@ -18,9 +24,13 @@ public:
 
 	enum Roles
 	{
-		EnableRole = Qt::UserRole + 1,
+		IdRole = Qt::UserRole + 1,
+		EnableRole,
 		HeaderRole,
 		NoteTextRole,
+		Visible,
+		XAxis,
+		YAxis,
 	};
 
 	//Basic functionality
@@ -28,17 +38,22 @@ public:
 	QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
 	//Editable
-	bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole) override;
-	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	virtual QHash<int, QByteArray> roleNames() const override;
 
-	Q_INVOKABLE void removeItemAt(int index);
-	Q_INVOKABLE void removeCompletedItems();
-	Q_INVOKABLE void appendItem();
+public slots:
+	bool appendNewItem();
+	bool removeItemAt(int index);
+	bool removeCompletedItems();
+	bool updateEnabled(int id, bool enabled);
+	bool updateHeader(int id, QString header);
+	bool updateNoteText(int id, QString notetext);
+	bool updateVisible(int id, bool visible);
+	bool updateAxis(int id, int xaxis, int yaxis);
+
+signals:
+	void newItemAppended();
 
 private:
-	bool setItemAt(int index, const StickItem& item);
-
 	QVector<StickItem> m_items;
 };
 

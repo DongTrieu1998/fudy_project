@@ -19,5 +19,9 @@
         <file>Setting/ThemeSetting.qml</file>
         <file>NoteScreen/Component/RadioButton.qml</file>
         <file>Setting/LanguageSetting.qml</file>
+        <file>NoteScreen/Component/DeleteItemPopup.qml</file>
+        <file>NoteScreen/Component/StickyNote.qml</file>
+        <file>NoteScreen/Component/FudyTrayIcon.qml</file>
+        <file>NoteScreen/Component/FramelessWindow.qml</file>
     </qresource>
 </RCC>
