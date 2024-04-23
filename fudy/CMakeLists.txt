@@ -60,6 +60,7 @@ target_link_libraries(fudy
   PRIVATE Qt${QT_VERSION_MAJOR}::Core
   Qt${QT_VERSION_MAJOR}::Quick
   Qt${QT_VERSION_MAJOR}::Qml
+  Qt${QT_VERSION_MAJOR}::Sql
   StylingComponents
 )
 

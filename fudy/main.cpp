@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "FudyUtils.h"
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
 #include "NoteScreen/StickNoteModel.h"
@@ -24,6 +25,8 @@ int main(int argc, char *argv[])
 	                                   0,
 	                                   "FudyFont",
 	                                   FudyFont::createSingletonInstance);
+	//TODO: Create a WARNING popup for this case
+	utils::createDatabase(app); //This function returns BOOL value
 
 	StickNoteModel stickNoteModel;
 	engine.rootContext()->setContextProperty("StickNoteModel", &stickNoteModel);
