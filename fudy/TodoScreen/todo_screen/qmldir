@@ -1,4 +1,0 @@
-module todo_screen
-plugin TodoScreen
-TodoScreen 1.0 qrc:/TodoScreen.qml
-typeinfo plugin.qmltypes
