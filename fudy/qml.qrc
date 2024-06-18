@@ -4,5 +4,12 @@
         <file>HomeScreen.qml</file>
         <file>MenuBarItem.qml</file>
         <file>FudyMenuBar.qml</file>
+        <file>NoteScreen/NoteScreen.qml</file>
+        <file>NoteScreen/Component/TaskItem.qml</file>
+        <file>NoteScreen/Component/NotePopup.qml</file>
+        <file>NoteScreen/Component/FudyPopup.qml</file>
+        <file>NoteScreen/Component/FudyButton.qml</file>
+        <file>NoteScreen/Component/StickyNote.qml</file>
+        <file>NoteScreen/Component/FramelessWindow.qml</file>
     </qresource>
 </RCC>
