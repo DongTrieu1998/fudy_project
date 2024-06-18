@@ -111,6 +111,14 @@ Rectangle {
 				Layout.preferredHeight: 30
 				fillMode: Image.PreserveAspectFit
 				source: "qrc:/image/remove-circle.svg"
+
+				MouseArea {
+					anchors.fill: parent
+					propagateComposedEvents: true
+					onClicked: function() {
+						deletePopup.open();
+					}
+				}
 			}
 		}
 
@@ -159,6 +167,13 @@ Rectangle {
 		}
 	}
 
+	DeleteItemPopup {
+		id: deletePopup
+
+		onDeleteItem: function() {
+			root.removeCurrentItem();
+		}
+	}
 
 	QtObject {
 		id: internal
