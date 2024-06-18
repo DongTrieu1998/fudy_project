@@ -1,14 +1,24 @@
 #include "StickNoteModel.h"
 
+#include <QLoggingCategory>
 #include <QSqlError>
 
 #include "../FudyUtils.h"
+
+namespace F_LOG {
+
+Q_LOGGING_CATEGORY(sticknoteModel, "fudy.sticknote")
+
+}
 
 using FD = FudyProperties;
 StickNoteModel::StickNoteModel(QObject* parent)
 	: QAbstractListModel{parent} {
 	QSqlQuery query;
 	query.prepare("SELECT * FROM " + db_utils::cTableName);
+	if (!query.exec()) {
+		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
+	}
 
 	while (query.next()) {
 		StickItem item;
@@ -20,7 +30,6 @@ StickNoteModel::StickNoteModel(QObject* parent)
 		item.xaxis = query.value("xaxis").toInt();
 		item.yaxis = query.value("yaxis").toInt();
 
-		// Thêm dữ liệu vào QVector
 		m_items.append(item);
 	}
 }
@@ -88,8 +97,12 @@ bool StickNoteModel::removeItemAt(int index) {
 	endRemoveRows();
 
 	if (!query.exec()) {
+		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
+
+	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "remove item at" << index
+							  << "successfully";
 
 	return true;
 }
@@ -119,8 +132,11 @@ bool StickNoteModel::appendNewItem() {
 	query.addBindValue(item.yaxis);
 
 	if (!query.exec()) {
+		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
+
+	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "append new item successfully";
 
 	return true;
 }
@@ -134,8 +150,12 @@ bool StickNoteModel::removeCompletedItems() {
 	query.prepare("DELETE FROM " + db_utils::cTableName);
 
 	if (!query.exec()) {
+		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
+
+	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName
+							  << "removed all items successfully";
 
 	return true;
 }
@@ -153,13 +173,17 @@ bool StickNoteModel::updateProperty(QString tableName, QString property, int id,
 		query.addBindValue(stringValue);
 		query.addBindValue(m_items.at(id).id);
 	} else {
+		qCCritical(F_LOG::sticknoteModel) << "Unsupported type for value";
 		return false;
 	}
 
 	if (!query.exec()) {
+		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
 
+	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "updated property" << property
+							  << "at item" << id << "successfully";
 	return true;
 }
 
