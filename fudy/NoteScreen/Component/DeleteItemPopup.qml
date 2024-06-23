@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
+import "../../SettingPanel"
+
 import Fudy.style.singleton 1.0
 
 FudyPopup {
@@ -38,7 +40,7 @@ FudyPopup {
 			FudyButton {
 				text: qsTr("Delete")
 				onClicked: {
-					deleteItem();
+					root.deleteItem();
 				}
 			}
 
@@ -46,7 +48,7 @@ FudyPopup {
 				text: qsTr("Keep")
 
 				onClicked: function() {
-					close();
+					root.close();
 				}
 			}
 		}

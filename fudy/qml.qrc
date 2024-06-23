@@ -9,7 +9,19 @@
         <file>NoteScreen/Component/NotePopup.qml</file>
         <file>NoteScreen/Component/FudyPopup.qml</file>
         <file>NoteScreen/Component/FudyButton.qml</file>
+        <file>NoteScreen/Component/SplitterItem.qml</file>
+        <file>NoteScreen/Component/Toggle.qml</file>
+        <file>NoteScreen/Component/TextWithToggle.qml</file>
+        <file>NoteScreen/Component/RadioButton.qml</file>
+        <file>NoteScreen/Component/DeleteItemPopup.qml</file>
         <file>NoteScreen/Component/StickyNote.qml</file>
+        <file>NoteScreen/Component/FudyTrayIcon.qml</file>
         <file>NoteScreen/Component/FramelessWindow.qml</file>
+        <file>SettingPanel/GeneralSetting.qml</file>
+        <file>SettingPanel/LanguageSetting.qml</file>
+        <file>SettingPanel/SettingItem.qml</file>
+        <file>SettingPanel/SettingPopup.qml</file>
+        <file>SettingPanel/SyncSettingItem.qml</file>
+        <file>SettingPanel/ThemeSetting.qml</file>
     </qresource>
 </RCC>

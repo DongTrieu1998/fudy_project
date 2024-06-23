@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 
 import "NoteScreen/Component"
+import "./SettingPanel"
 
 import Fudy.style.singleton 1.0
 
@@ -53,7 +54,17 @@ Rectangle {
 		}
 		MenuBarItem {
 			sourceUrl: internal.settingIconSource
+			MouseArea {
+				anchors.fill: parent
 
+				onClicked: function() {
+					settingPopup.open();
+				}
+			}
+
+			SettingPopup {
+				id: settingPopup
+			}
 		}
 		MenuBarItem {
 			sourceUrl: internal.exitIconSource
