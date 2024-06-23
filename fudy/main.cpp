@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
 	app.setWindowIcon(QIcon(":/image/icons_fudy.png"));
 
-	db_utils::createDatabase(app); //This function returns BOOL value
+	db_utils::createDatabase(app);
 
 	StickNoteModel stickNoteModel;
 	engine.rootContext()->setContextProperty("StickNoteModel", &stickNoteModel);
