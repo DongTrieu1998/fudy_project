@@ -7,8 +7,8 @@ Image {
 	id: root
 	property string sourceUrl: ""
 
-	Layout.preferredWidth: 30
-	Layout.preferredHeight: 30
+	Layout.preferredWidth: 15
+	Layout.preferredHeight: 15
 	fillMode: Image.PreserveAspectFit
 	source: root.sourceUrl
 }

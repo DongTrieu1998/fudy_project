@@ -49,11 +49,11 @@ BinPackArguments: false
 BinPackParameters: false
 
 # Configure each individual brace in BraceWrapping
-BreakBeforeBraces: Custom
+BreakBeforeBraces: Attach
 # Control of individual brace wrapping cases
 BraceWrapping: {
     AfterClass: 'true'
-    AfterControlStatement: 'true'
+    AfterControlStatement: 'false'
     AfterEnum : 'true'
     AfterFunction : 'true'
     AfterNamespace : 'true'
@@ -107,7 +107,7 @@ PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: Never
+SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 SpacesInAngles:  false
