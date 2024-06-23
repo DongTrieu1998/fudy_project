@@ -2,7 +2,14 @@
 
 #include <QFile>
 #include <QGuiApplication>
+#include <QLoggingCategory>
 #include <QSqlError>
+
+namespace F_LOG {
+
+Q_LOGGING_CATEGORY(database, "fudy.database")
+
+}
 
 const QString cDBName = QStringLiteral("fudyDB.db");
 const QString cTableSchema = "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -17,7 +24,6 @@ namespace {
 
 using FD = FudyProperties;
 static const QHash<FD, QString> fudyProperties = {
-	//StickNote properties
 	{FD::Id, "id"},
 	{FD::Enabled, "enabled"},
 	{FD::Header, "header"},
@@ -25,8 +31,6 @@ static const QHash<FD, QString> fudyProperties = {
 	{FD::Visible, "visible"},
 	{FD::XAxis, "xaxis"},
 	{FD::YAxis, "yaxis"},
-
-	//You can add more props here
 };
 
 bool createTable(QSqlDatabase db, const QString& tableName, const QString& tableSchema) {
@@ -36,35 +40,40 @@ bool createTable(QSqlDatabase db, const QString& tableName, const QString& table
 		QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(tableName).arg(tableSchema);
 
 	if (!query.prepare(createTableQuery)) {
+		qCCritical(F_LOG::database) << "Error preparing query:" << query.lastError().text();
 		return false;
 	}
 
 	if (!query.exec()) {
+		qCCritical(F_LOG::database) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
 
+	qCInfo(F_LOG::database) << "Table" << tableName << "created successfully";
 	return true;
 }
 
 } // namespace
 
 bool db_utils::createDatabase(const QGuiApplication& app) {
-	//	Database is a normal file. Check if file *.db is existed or not.
 	const QFile databaseFile(app.applicationDirPath() + "/" + cDBName);
+	qCWarning(F_LOG::database) << "Database existed status : " << databaseFile.exists();
 
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 	db.setDatabaseName(app.applicationDirPath() + "/" + cDBName);
 
 	if (!db.open()) {
+		qCCritical(F_LOG::database) << "Error: Unable to open the database";
 		return false;
 	}
 
-	// Create the necessary tables
 	if (!createTable(db, cTableName, cTableSchema)) {
+		qCCritical(F_LOG::database) << "Error: Unable to create table";
 		return false;
 	}
 
-	return true; // Database already exists
+	qCInfo(F_LOG::database) << "Database and table created successfully";
+	return true;
 }
 
 QString fudy_props_helper::to_string(FudyProperties prop) {

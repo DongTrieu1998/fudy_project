@@ -117,6 +117,15 @@ ApplicationWindow {
 		}
 	}
 
+	FudyTrayIcon {
+		id: trayIcon
+
+		onShow: function() {
+			window.show();
+			window.raise();
+		}
+	}
+
 	QtObject {
 		id: internal
 
