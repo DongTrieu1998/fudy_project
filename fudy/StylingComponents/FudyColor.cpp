@@ -52,6 +52,11 @@ QColor FudyColor::background9() const
 	return QColor::fromRgb(m_background9);
 }
 
+QColor FudyColor::background10() const
+{
+	return QColor::fromRgb(m_background10);
+}
+
 QColor FudyColor::layer1() const {
 	return QColor::fromRgb(m_layer1);
 }
@@ -87,6 +92,21 @@ QColor FudyColor::layer8() const
 	return QColor::fromRgb(m_layer8);
 }
 
+QColor FudyColor::layer9() const
+{
+	return QColor::fromRgb(m_layer9);
+}
+
+QColor FudyColor::layer10() const
+{
+	return QColor::fromRgb(m_layer10);
+}
+
+QColor FudyColor::layer11() const
+{
+	return QColor::fromRgb(m_layer11);
+}
+
 QColor FudyColor::fontColor1() const {
 	return QColor::fromRgb(m_fontColor1);
 }
@@ -97,4 +117,8 @@ QColor FudyColor::fontColor2() const {
 
 QColor FudyColor::fontColor3() const {
 	return QColor::fromRgb(m_fontColor3);
+}
+
+QColor FudyColor::fontColor4() const {
+	return QColor::fromRgb(m_fontColor4);
 }

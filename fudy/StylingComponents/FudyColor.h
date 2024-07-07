@@ -17,6 +17,7 @@ class FudyColor : public QObject {
 	Q_PROPERTY(QColor background7 READ background7 CONSTANT)
 	Q_PROPERTY(QColor background8 READ background8 CONSTANT)
 	Q_PROPERTY(QColor background9 READ background9 CONSTANT)
+	Q_PROPERTY(QColor background10 READ background10 CONSTANT)
 
 	Q_PROPERTY(QColor layer1 READ layer1 CONSTANT)
 	Q_PROPERTY(QColor layer2 READ layer2 CONSTANT)
@@ -26,10 +27,14 @@ class FudyColor : public QObject {
 	Q_PROPERTY(QColor layer6 READ layer6 CONSTANT)
 	Q_PROPERTY(QColor layer7 READ layer7 CONSTANT)
 	Q_PROPERTY(QColor layer8 READ layer8 CONSTANT)
+	Q_PROPERTY(QColor layer9 READ layer9 CONSTANT)
+	Q_PROPERTY(QColor layer10 READ layer10 CONSTANT)
+	Q_PROPERTY(QColor layer11 READ layer11 CONSTANT)
 
 	Q_PROPERTY(QColor fontColor1 READ fontColor1 CONSTANT)
 	Q_PROPERTY(QColor fontColor2 READ fontColor2 CONSTANT)
 	Q_PROPERTY(QColor fontColor3 READ fontColor3 CONSTANT)
+	Q_PROPERTY(QColor fontColor4 READ fontColor4 CONSTANT)
 
 	explicit FudyColor(QObject* parent = nullptr);
 	static FudyColor* m_instance;
@@ -45,6 +50,8 @@ public:
 	QColor background6() const;
 	QColor background7() const;
 	QColor background8() const;
+	QColor background9() const;
+	QColor background10() const;
 
 	QColor layer1() const;
 	QColor layer2() const;
@@ -54,12 +61,14 @@ public:
 	QColor layer6() const;
 	QColor layer7() const;
 	QColor layer8() const;
+	QColor layer9() const;
+	QColor layer10() const;
+	QColor layer11() const;
 
 	QColor fontColor1() const;
 	QColor fontColor2() const;
 	QColor fontColor3() const;
-
-	QColor background9() const;
+	QColor fontColor4() const;
 
 private:
 	//Background color
@@ -72,6 +81,7 @@ private:
 	const QRgb m_background7 = 0xF8CBB8;
 	const QRgb m_background8 = 0xFF9AA2;
 	const QRgb m_background9 = 0xF5F5F5;
+	const QRgb m_background10 = 0xFFEBE3;
 
 	//Layer color
 	const QRgb m_layer1 = 0x619DDD;
@@ -82,11 +92,16 @@ private:
 	const QRgb m_layer6 = 0xF5F5F5;
 	const QRgb m_layer7 = 0xFF9AA2;
 	const QRgb m_layer8 = 0xE51818;
+	const QRgb m_layer9 = 0xFEC8D8;
+	const QRgb m_layer10 = 0xD291BC;
+	const QRgb m_layer11 = 0x957DAD;
+
 
 	//Text color
 	const QRgb m_fontColor1 = 0xFFFFFF;
 	const QRgb m_fontColor2 = 0x000000;
 	const QRgb m_fontColor3 = 0xFFDE00;
+	const QRgb m_fontColor4 = 0x957DAD;
 
 	//Components color
 };

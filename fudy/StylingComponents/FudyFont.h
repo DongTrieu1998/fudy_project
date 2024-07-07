@@ -41,7 +41,7 @@ private:
 	const QString m_headingFont = "Italianno";
 	const QString m_textFont1 = "Itim";
 	const QString m_textFont2 = "Imprima";
-	const QString m_keyFont = "Jua";
+	const QString m_keyFont = "Itim";
 };
 
 #endif // FUDYFONT_H

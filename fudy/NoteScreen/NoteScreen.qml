@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Basic
 import QtQuick.Window 2.15
 
 import Fudy.style.singleton 1.0
@@ -59,6 +60,19 @@ Item {
 				spacing: 10
 
 				model: StickNoteModel
+
+				ScrollBar.vertical: ScrollBar {
+					id: scroll
+					hoverEnabled: true
+					active: hovered || pressed
+					orientation: Qt.Vertical
+					anchors {
+						top: parent.top
+						right: parent.right
+						rightMargin: -5
+						bottom: parent.bottom
+					}
+				}
 
 				delegate: TaskItem {
 					id: delegateItem
