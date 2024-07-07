@@ -2,13 +2,12 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Basic
 
 import Fudy.style.singleton 1.0
 
 FramelessWindow {
 	id: root
-	width: 300
-	height: 300
 
 	property int index
 	property string noteTitle
@@ -31,32 +30,35 @@ FramelessWindow {
 			root.noteVisible = false;
 			root.noteVisibleUpdated(root.noteVisible);
 		}
+		if (loaderItem.text.length === 0) {
+			loaderItem.text = root.noteText;
+		} else {
+			root.noteText = loaderItem.text;
+			root.noteContentUpdated(loaderItem.text)
+		}
 	}
 
-	contentComponent: ColumnLayout {
-		spacing: 12
+	contentComponent: TextField {
+		id: textField
 
-		TextArea {
-			id: textField
-			Layout.fillWidth: true
-			Layout.fillHeight: true
-			Layout.margins: 5
-			font: FudyFont.text2
-			color: FudyColor.fontColor2
-			wrapMode: TextInput.Wrap
-			placeholderText: qsTr("Enter your Note's header")
+		Layout.fillWidth: true
+		Layout.fillHeight: true
+		Layout.margins: 5
 
-			onEditingFinished: function() {
-				if (textField.text.length == 0) {
-					textField.text = root.noteTitle;
-				}
-			}
+		font: FudyFont.text2
+		color: FudyColor.fontColor2
+		background: Rectangle {
+			color: FudyColor.layer6
+		}
 
-			Connections {
-				target: root
-				function onDoubleClicked() {
-					textField.focus = true;
-				}
+		wrapMode: TextInput.Wrap
+		placeholderText: qsTr("What do you want???")
+		text: root.noteText
+
+		Connections {
+			target: root
+			function onDoubleClicked() {
+				textField.focus = true;
 			}
 		}
 	}
