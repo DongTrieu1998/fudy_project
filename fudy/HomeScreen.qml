@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
+import Qt5Compat.GraphicalEffects
 
 import Fudy.style.singleton 1.0
 
@@ -41,11 +42,19 @@ Item {
 			width: 348
 			height: 68
 			radius: 8
-			color: FudyColor.layer1
+			border {
+				width: 4
+				color: FudyColor.layer11
+			}
+
+			gradient: Gradient {
+				GradientStop { position: 0.4; color: FudyColor.layer9 }
+				GradientStop { position: 1; color: FudyColor.layer10 }
+			}
 			Text {
 				id: buttonName
 				anchors.centerIn: parent
-				color: FudyColor.fontColor1
+				color: FudyColor.fontColor4
 				font: FudyFont.keyLarge
 				text: name
 			}
@@ -53,17 +62,19 @@ Item {
 			MouseArea {
 				anchors.fill: parent
 				onClicked: function() {
-					internal.openApplication("NoteScreen/NoteScreen.qml");
+					internal.openApplication(UtilityWidget);
 				}
 			}
 		}
-
 	}
 
 	Image {
 		id: stickNoteImg
-		anchors.left: root.left
-		anchors.leftMargin: 316
+		anchors {
+			bottom: root.bottom
+			right: root.right
+			bottomMargin: 40
+		}
 		source: "qrc:/image/stick_note_3d.png"
 	}
 
@@ -72,6 +83,7 @@ Item {
 		id: buttonModel
 		ListElement {
 			name: qsTr("NOTE")
+			UtilityWidget: "NoteScreen/NoteScreen.qml"
 		}
 		ListElement {
 			name: qsTr("PLAN")

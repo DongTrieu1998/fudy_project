@@ -23,7 +23,7 @@ void FudyFont::addFontPath() {
 	QFontDatabase::addApplicationFont(":/font/Imprima-Regular.ttf");
 }
 
-QFont prepareFont(const QString& family, qreal fontSizeF, int weight = QFont::PreferNoHinting) {
+QFont prepareFont(const QString& family, qreal fontSizeF, QFont::Weight weight = QFont::Weight::Normal) {
 	QFont font;
 	font.setFamily(family);
 	font.setPointSizeF(fontSizeF);
@@ -74,6 +74,6 @@ QFont FudyFont::keyMedium() const {
 }
 
 QFont FudyFont::keyLarge() const {
-	QFont font = prepareFont(m_keyFont, 40);
+	QFont font = prepareFont(m_keyFont, 30, QFont::Weight::Light);
 	return font;
 }
