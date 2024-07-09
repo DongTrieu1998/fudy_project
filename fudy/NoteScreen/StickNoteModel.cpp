@@ -11,9 +11,8 @@ Q_LOGGING_CATEGORY(sticknoteModel, "fudy.sticknote")
 
 }
 
-using FD = FudyProperties;
-StickNoteModel::StickNoteModel(QObject* parent)
-	: QAbstractListModel{parent} {
+void StickNoteModel::queryData() {
+	m_items.clear();
 	QSqlQuery query;
 	query.prepare("SELECT * FROM " + db_utils::cTableName);
 	if (!query.exec()) {
@@ -32,6 +31,11 @@ StickNoteModel::StickNoteModel(QObject* parent)
 
 		m_items.append(item);
 	}
+}
+
+StickNoteModel::StickNoteModel(QObject* parent)
+	: QAbstractListModel{parent} {
+	queryData();
 }
 
 int StickNoteModel::rowCount(const QModelIndex& parent) const {
@@ -104,32 +108,26 @@ bool StickNoteModel::removeItemAt(int index) {
 	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "remove item at" << index
 							  << "successfully";
 
+	queryData();
 	return true;
 }
 
 bool StickNoteModel::appendNewItem() {
 	beginInsertRows(QModelIndex(), rowCount(), rowCount());
 
-	StickItem item;
-	item.enabled = false;
-	item.header = "Task to do";
-	item.noteText = "";
-	item.visible = false;
-	item.xaxis = 0;
-	item.yaxis = 0;
-	m_items.append(item);
+	m_items.append(StickItem{});
 
 	endInsertRows();
 
 	QSqlQuery query;
 	query.prepare("insert into " + db_utils::cTableName +
 				  " (enabled,header,noteText,visible,xaxis,yaxis) values (?,?,?,?,?,?)");
-	query.addBindValue(item.enabled ? 1 : 0);
-	query.addBindValue(item.header);
-	query.addBindValue(NULL);
-	query.addBindValue(item.visible ? 1 : 0);
-	query.addBindValue(item.xaxis);
-	query.addBindValue(item.yaxis);
+	query.addBindValue(m_items.last().enabled);
+	query.addBindValue(m_items.last().header);
+	query.addBindValue(m_items.last().noteText);
+	query.addBindValue(m_items.last().visible);
+	query.addBindValue(m_items.last().xaxis);
+	query.addBindValue(m_items.last().yaxis);
 
 	if (!query.exec()) {
 		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
@@ -138,6 +136,7 @@ bool StickNoteModel::appendNewItem() {
 
 	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "append new item successfully";
 
+	queryData();
 	return true;
 }
 
@@ -157,69 +156,51 @@ bool StickNoteModel::removeCompletedItems() {
 	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName
 							  << "removed all items successfully";
 
+	queryData();
 	return true;
 }
 
-bool StickNoteModel::updateProperty(QString tableName, QString property, int id, QVariant value) {
+//TODO: Refector this function as it is called multiple time
+bool StickNoteModel::updateProperty(const QString& tableName, const QString& property, int id, const QVariant& value) {
 	QSqlQuery query;
-	query.prepare("update " + tableName + " set " + property + " = ? where id = ?");
+	query.prepare(QString("update %1 set %2 = ? where id = ?").arg(tableName).arg(property));
 
-	if (value.canConvert<int>()) {
-		int intValue = value.toInt();
-		query.addBindValue(intValue);
-		query.addBindValue(m_items.at(id).id);
-	} else if (value.canConvert<QString>()) {
-		QString stringValue = value.toString();
-		query.addBindValue(stringValue);
-		query.addBindValue(m_items.at(id).id);
-	} else {
-		qCCritical(F_LOG::sticknoteModel) << "Unsupported type for value";
-		return false;
-	}
+	query.addBindValue(value);
+	query.addBindValue(id);
 
 	if (!query.exec()) {
 		qCCritical(F_LOG::sticknoteModel) << "Error executing query:" << query.lastError().text();
 		return false;
 	}
 
-	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "updated property" << property
-							  << "at item" << id << "successfully";
+	qCInfo(F_LOG::sticknoteModel) << "Table" << tableName << "updated property" << property
+								  << "at item" << id << "successfully";
+	queryData();
 	return true;
 }
 
-bool StickNoteModel::updateEnabled(int id, bool enabled) {
-	m_items[id].enabled = enabled;
-
+bool StickNoteModel::updateEnabled(int index, bool enabled) {
 	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FD::Enabled), id, enabled);
+		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Enabled), m_items[index].id, enabled);
 }
 
-bool StickNoteModel::updateHeader(int id, QString header) {
-	m_items[id].header = header;
-
+bool StickNoteModel::updateHeader(int index, QString header) {
 	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FD::Header), id, header);
+		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Header), m_items[index].id, header);
 }
 
-bool StickNoteModel::updateNoteText(int id, QString notetext) {
-	m_items[id].noteText = notetext;
-
+bool StickNoteModel::updateNoteText(int index, QString notetext) {
 	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FD::NoteText), id, notetext);
+		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::NoteText), m_items[index].id, notetext);
 }
 
-bool StickNoteModel::updateVisible(int id, bool visible) {
-	m_items[id].visible = visible;
-
+bool StickNoteModel::updateVisible(int index, bool visible) {
 	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FD::Visible), id, visible);
+		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Visible), m_items[index].id, visible);
 }
 
-bool StickNoteModel::updateAxis(int id, int xaxis, int yaxis) {
-	m_items[id].xaxis = xaxis;
-	m_items[id].yaxis = yaxis;
-
+bool StickNoteModel::updateAxis(int index, int xaxis, int yaxis) {
 	return updateProperty(
-			   db_utils::cTableName, fudy_props_helper::to_string(FD::XAxis), id, xaxis) &&
-		   updateProperty(db_utils::cTableName, fudy_props_helper::to_string(FD::YAxis), id, yaxis);
+			   db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::XAxis), m_items[index].id, xaxis) &&
+		   updateProperty(db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::YAxis), m_items[index].id, yaxis);
 }

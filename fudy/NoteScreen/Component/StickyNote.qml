@@ -10,13 +10,15 @@ FramelessWindow {
 	width: 300
 	height: 300
 
-	property int index
-	property string noteTitle
-	property bool noteVisible
-	property int xaxis
-	property int yaxis
+	property int index: 0
+	property string noteTitle: ""
+	property bool noteVisible: false
+	property string noteText: ""
+	property int xaxis: 0
+	property int yaxis: 0
 
 	signal noteVisibleUpdated(bool visible)
+	signal noteContentUpdated(string noteContent)
 
 	headerText: textMetrics.elidedText
 	title: textMetrics.text
