@@ -52,7 +52,6 @@ if(CMAKE_${DETECTED_COMPILER_TYPE}_COMPILER_ID STREQUAL "MSVC")
     list(APPEND CONAN_ARGS -s compiler.version=${COMPILER_VERSION})
     list(APPEND CONAN_ARGS -s:b compiler.version=${COMPILER_VERSION})
 
-
 elseif()
     message(FATAL_ERROR "Unsupported platform " CMAKE_${DETECTED_COMPILER_TYPE}_COMPILER_ID)
 endif()
