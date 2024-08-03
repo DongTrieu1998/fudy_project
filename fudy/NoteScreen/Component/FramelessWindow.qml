@@ -9,6 +9,7 @@ ApplicationWindow {
 
 	property string headerText: ""
 	property alias contentComponent: contentLoader.sourceComponent
+	property alias loaderItem: contentLoader.item
 	property int index
 
 	signal axisUpdated(int xaxis, int yaxis)
@@ -16,6 +17,8 @@ ApplicationWindow {
 	signal clicked()
 	signal doubleClicked()
 
+	width: 400
+	height: 400
 	flags: Qt.Window| Qt.FramelessWindowHint
 	color: "transparent"
 	background: Rectangle {
@@ -100,26 +103,66 @@ ApplicationWindow {
 		id: mouseArea
 
 		anchors.fill: parent
-
+		hoverEnabled: true
 		acceptedButtons: Qt.LeftButton
-		pressAndHoldInterval: internal.interval
+		pressAndHoldInterval: 100
+
 		onPressAndHold: function(mouse) {
-			if (mouse.x >= parent.width - internal.margin || mouse.x <= internal.margin || mouse.y >= parent.height - internal.margin) {
+			if (mouse.x >= parent.width - internal.margin
+				|| mouse.x <= internal.margin
+				|| mouse.y >= parent.height - internal.margin)
+			{
 				root.startSystemResize(Qt.RightEdge | Qt.BottomEdge);
 			}
 		}
 		onDoubleClicked: function() {
 			root.doubleClicked();
 		}
+
+		onPositionChanged: function(mouse) {
+			if (mouse.x >= parent.width - internal.margin
+				&& mouse.y >= parent.height - internal.margin)
+			{
+				mouseArea.cursorShape = Qt.SizeFDiagCursor;
+			} else {
+				mouseArea.cursorShape = Qt.ArrowCursor;
+			}
+		}
 	}
 
-	ColumnLayout {
-		anchors.fill: parent
-		spacing: 0
+	Flickable {
+		id: scrollView
+		width: parent.width
+		height: parent.height - 30
+		contentWidth: parent.width
+		contentHeight: loaderLayout.implicitHeight + 10
+		ScrollBar.vertical: ScrollBar {
+			id: scrollBar
+			hoverEnabled: true
+			active: hovered || pressed
+			policy: ScrollBar.AsNeeded
+			orientation: Qt.Vertical
+			anchors {
+				top: parent.top
+				bottom: parent.bottom
+				left: parent.right
+				leftMargin: -20
+			}
+		}
 
-		Loader {
-			id: contentLoader
-			Layout.fillWidth: true
+		ColumnLayout {
+			anchors.fill: parent
+			anchors.margins: 10
+
+			Loader {
+				id: contentLoader
+				Layout.fillWidth: true
+				Layout.alignment: Qt.AlignTop
+
+				onImplicitHeightChanged: function() {
+					scrollBar.increase();
+				}
+			}
 		}
 	}
 
