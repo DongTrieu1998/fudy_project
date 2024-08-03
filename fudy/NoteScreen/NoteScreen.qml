@@ -79,6 +79,7 @@ Item {
 					taskIndex: index
 					enabled: model.enabled
 					header: model.header
+					noteText: model.noteText
 					noteVisible: model.visible
 					xaxis: model.xaxis
 					yaxis: model.yaxis
@@ -96,6 +97,10 @@ Item {
 
 					onNoteVisibleUpdated: function(visible) {
 						noteScreenListView.model.updateVisible(index, visible);
+					}
+
+					onNoteTextEditted: function(noteText) {
+						noteScreenListView.model.updateNoteText(index, noteText);
 					}
 
 					onAxisUpdated: function(xaxis, yaxis) {
