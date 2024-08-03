@@ -62,7 +62,7 @@ Item {
 				model: StickNoteModel
 
 				ScrollBar.vertical: ScrollBar {
-					id: scroll
+					id: scrollBar
 					hoverEnabled: true
 					active: hovered || pressed
 					orientation: Qt.Vertical

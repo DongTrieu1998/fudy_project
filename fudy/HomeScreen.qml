@@ -62,7 +62,7 @@ Item {
 			MouseArea {
 				anchors.fill: parent
 				onClicked: function() {
-					internal.openApplication(screen);
+					internal.openApplication(UtilityWidget);
 				}
 			}
 		}
@@ -83,7 +83,7 @@ Item {
 		id: buttonModel
 		ListElement {
 			name: qsTr("NOTE")
-			screen: "NoteScreen/NoteScreen.qml"
+			UtilityWidget: "NoteScreen/NoteScreen.qml"
 		}
 		ListElement {
 			name: qsTr("PLAN")

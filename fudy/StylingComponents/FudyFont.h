@@ -9,15 +9,15 @@
 
 class FudyFont : public QObject {
 	Q_OBJECT
-	Q_PROPERTY(QFont text1 READ text1 CONSTANT)
-	Q_PROPERTY(QFont text2 READ text1 CONSTANT)
-	Q_PROPERTY(QFont text3 READ text3 CONSTANT)
-	Q_PROPERTY(QFont heading1 READ heading1 CONSTANT)
-	Q_PROPERTY(QFont heading2 READ heading2 CONSTANT)
-	Q_PROPERTY(QFont headingPopup READ headingPopup CONSTANT)
-	Q_PROPERTY(QFont keySmall READ keySmall CONSTANT)
-	Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT)
-	Q_PROPERTY(QFont keyLarge READ keyLarge CONSTANT)
+	Q_PROPERTY(QFont text1 READ text1 CONSTANT FINAL)
+	Q_PROPERTY(QFont text2 READ text1 CONSTANT FINAL)
+	Q_PROPERTY(QFont text3 READ text3 CONSTANT FINAL)
+	Q_PROPERTY(QFont heading1 READ heading1 CONSTANT FINAL)
+	Q_PROPERTY(QFont heading2 READ heading2 CONSTANT FINAL)
+	Q_PROPERTY(QFont headingPopup READ headingPopup CONSTANT FINAL)
+	Q_PROPERTY(QFont keySmall READ keySmall CONSTANT FINAL)
+	Q_PROPERTY(QFont keyMedium READ keyMedium CONSTANT FINAL)
+	Q_PROPERTY(QFont keyLarge READ keyLarge CONSTANT FINAL)
 
 	explicit FudyFont(QObject* parent = nullptr);
 	static FudyFont* m_instance;
