@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick
 
 import Fudy.style.singleton 1.0
 
