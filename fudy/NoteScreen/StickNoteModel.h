@@ -1,4 +1,4 @@
-#ifndef STICKNOTEMODEL_H
+	#ifndef STICKNOTEMODEL_H
 #define STICKNOTEMODEL_H
 
 #include <QAbstractListModel>
@@ -6,13 +6,13 @@
 #include <QSqlQueryModel>
 
 struct StickItem {
-	int id;
-	bool enabled;
-	QString header;
-	QString noteText;
-	bool visible;
-	int xaxis;
-	int yaxis;
+	int id = 0;
+	bool enabled = false;
+	QString header = "Task to do";
+	QString noteText = "";
+	bool visible = false;
+	int xaxis = 0;
+	int yaxis = 0;
 };
 
 class StickNoteModel : public QAbstractListModel {
@@ -40,17 +40,19 @@ public slots:
 	bool removeItemAt(int index);
 	bool removeCompletedItems();
 
-	bool updateProperty(QString tableName, QString property, int id, QVariant value);
-	bool updateEnabled(int id, bool enabled);
-	bool updateHeader(int id, QString header);
-	bool updateNoteText(int id, QString notetext);
-	bool updateVisible(int id, bool visible);
-	bool updateAxis(int id, int xaxis, int yaxis);
+	bool updateProperty(const QString& tableName, const QString& property, int id, const QVariant& value);
+	bool updateEnabled(int index, bool enabled);
+	bool updateHeader(int index, QString header);
+	bool updateNoteText(int index, QString notetext);
+	bool updateVisible(int index, bool visible);
+	bool updateAxis(int index, int xaxis, int yaxis);
 
 signals:
 	void newItemAppended();
 
 private:
+	void queryData();
+
 	QVector<StickItem> m_items;
 };
 

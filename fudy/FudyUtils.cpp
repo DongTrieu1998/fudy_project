@@ -22,15 +22,14 @@ const QString cTableSchema = "id INTEGER PRIMARY KEY AUTOINCREMENT, "
 
 namespace {
 
-using FD = FudyProperties;
-static const QHash<FD, QString> fudyProperties = {
-	{FD::Id, "id"},
-	{FD::Enabled, "enabled"},
-	{FD::Header, "header"},
-	{FD::NoteText, "noteText"},
-	{FD::Visible, "visible"},
-	{FD::XAxis, "xaxis"},
-	{FD::YAxis, "yaxis"},
+static const QHash<FudyProperties, QString> fudyProperties = {
+	{FudyProperties::Id, "id"},
+	{FudyProperties::Enabled, "enabled"},
+	{FudyProperties::Header, "header"},
+	{FudyProperties::NoteText, "noteText"},
+	{FudyProperties::Visible, "visible"},
+	{FudyProperties::XAxis, "xaxis"},
+	{FudyProperties::YAxis, "yaxis"},
 };
 
 bool createTable(QSqlDatabase db, const QString& tableName, const QString& tableSchema) {

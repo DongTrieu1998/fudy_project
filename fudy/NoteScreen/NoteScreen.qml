@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Basic
 import QtQuick.Window 2.15
 
 import Fudy.style.singleton 1.0
@@ -60,11 +61,25 @@ Item {
 
 				model: StickNoteModel
 
+				ScrollBar.vertical: ScrollBar {
+					id: scrollBar
+					hoverEnabled: true
+					active: hovered || pressed
+					orientation: Qt.Vertical
+					anchors {
+						top: parent.top
+						right: parent.right
+						rightMargin: -5
+						bottom: parent.bottom
+					}
+				}
+
 				delegate: TaskItem {
 					id: delegateItem
 					taskIndex: index
 					enabled: model.enabled
 					header: model.header
+					noteText: model.noteText
 					noteVisible: model.visible
 					xaxis: model.xaxis
 					yaxis: model.yaxis
@@ -82,6 +97,10 @@ Item {
 
 					onNoteVisibleUpdated: function(visible) {
 						noteScreenListView.model.updateVisible(index, visible);
+					}
+
+					onNoteTextEditted: function(noteText) {
+						noteScreenListView.model.updateNoteText(index, noteText);
 					}
 
 					onAxisUpdated: function(xaxis, yaxis) {
