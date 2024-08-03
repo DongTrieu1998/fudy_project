@@ -18,7 +18,7 @@ Rectangle {
 	signal removeCurrentItem()
 	signal enabledEditted(bool enabled)
 	signal headerEditted(string headerText)
-	signal noteTextEditted()
+	signal noteTextEditted(string noteText)
 	signal noteVisibleUpdated(bool visible)
 	signal axisUpdated(int xaxis, int yaxis)
 	signal clicked()
@@ -152,12 +152,19 @@ Rectangle {
 		index: root.taskIndex
 		noteTitle: headerText.text
 		noteVisible: root.noteVisible
+		noteText: root.noteText
+
 		xaxis: root.xaxis
 		yaxis: root.yaxis
 
 		onNoteVisibleUpdated: function(visible) {
 			root.noteVisible = visible;
 			root.noteVisibleUpdated(root.noteVisible);
+		}
+
+		onNoteContentUpdated: function(noteContent) {
+			root.noteText = noteContent;
+			root.noteTextEditted(root.noteText);
 		}
 
 		onAxisUpdated: function(xaxis, yaxis) {

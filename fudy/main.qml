@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 
 import "NoteScreen/Component"
 
@@ -13,13 +14,10 @@ ApplicationWindow {
 	property alias screenLoader: screenLoader.source
 	property alias backgroundColor: windowBackground.color
 
-	width: screenLoader.width
-	height: screenLoader.height
-
-	minimumWidth: width
-	maximumWidth: width
-	minimumHeight: height
-	maximumHeight: height
+	minimumWidth: screenLoader.width
+	maximumWidth: screenLoader.width
+	minimumHeight: screenLoader.height
+	maximumHeight: screenLoader.height
 
 	flags: Qt.Window| Qt.FramelessWindowHint
 
@@ -31,7 +29,10 @@ ApplicationWindow {
 		id: windowBackground
 		anchors.fill: parent
 		radius: 12
-		color: FudyColor.background1
+		gradient: Gradient {
+			GradientStop { position: 0.5; color: FudyColor.background10 }
+			GradientStop { position: 1; color: FudyColor.background1 }
+		}
 	}
 
 	menuBar: Loader {
