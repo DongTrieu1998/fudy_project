@@ -10,7 +10,7 @@ ApplicationWindow {
 	property string headerText: ""
 	property alias contentComponent: contentLoader.sourceComponent
 	property alias loaderItem: contentLoader.item
-	property int index
+	property int index: 0
 
 	signal axisUpdated(int xaxis, int yaxis)
 	signal hided(int index)
@@ -41,6 +41,31 @@ ApplicationWindow {
 				radius: internal.radius
 				color: FudyColor.layer7
 
+				clip: true
+				layer.enabled: true
+				layer.smooth: true
+
+				Canvas {
+					id: canvas
+					anchors.fill: parent
+					onPaint: {
+						var ctx = getContext("2d");
+						ctx.clearRect(0, 0, width, height);
+
+						ctx.beginPath();
+						ctx.moveTo(0, internal.radius);
+						ctx.arcTo(0, 0, internal.radius, 0, internal.radius);
+						ctx.lineTo(width - internal.radius, 0);
+						ctx.arcTo(width, 0, width, internal.radius, internal.radius);
+						ctx.lineTo(width, height);
+						ctx.lineTo(0, height);
+						ctx.closePath();
+
+						ctx.fillStyle = FudyColor.layer7;
+						ctx.fill();
+					}
+				}
+
 				Text {
 					id: headerText
 
@@ -69,13 +94,6 @@ ApplicationWindow {
 							root.hided(root.index);
 						}
 					}
-				}
-
-				Rectangle {
-					width: parent.width
-					height: internal.radius
-					anchors.bottom: headerRect.bottom
-					color: headerRect.color
 				}
 			}
 		}

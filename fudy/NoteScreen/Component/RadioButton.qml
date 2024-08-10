@@ -14,7 +14,7 @@ T.RadioButton {
 							 implicitIndicatorHeight + topPadding + bottomPadding)
 
 	spacing: 13
-	text: qsTr("RadioButton")
+	text: qsTr("RadioButton") + Translator.language
 	indicator: Rectangle {
 		implicitWidth: 20
 		implicitHeight: 20

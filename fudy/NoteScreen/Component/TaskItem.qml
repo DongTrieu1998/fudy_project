@@ -9,11 +9,11 @@ Rectangle {
 
 	property int taskIndex: -1
 	property bool enabled: false
-	property string header
+	property string header: ""
 	property bool noteVisible: false
-	property var noteText
-	property int xaxis
-	property int yaxis
+	property var noteText: ""
+	property int xaxis: 0
+	property int yaxis: 0
 
 	signal removeCurrentItem()
 	signal enabledEditted(bool enabled)

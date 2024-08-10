@@ -12,21 +12,31 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/conan_toolchain.cmake")
 
 option(BUILD_SHARED_LIBS "Set the default library type for add_library to STATIC" OFF)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Qml)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Qml Sql)
+find_package(QT NAMES Qt6 Qt5 REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Qml Sql LinguistTools)
 
 include(cmake/conanpackage.cmake)
+include(cmake/TranslationUtils.cmake)
 
 set(headers
     NoteScreen/StickNoteController.h
     NoteScreen/StickNoteModel.h
+    translations/translation/translation.h
     FudyUtils.h
 )
 
 set(sources
     NoteScreen/StickNoteController.cpp
     NoteScreen/StickNoteModel.cpp
+    translations/translation/translation.cpp
     FudyUtils.cpp
+)
+
+set(TS_FILES
+    translations/fudy_cn.ts
+    translations/fudy_ja.ts
+    translations/fudy_us.ts
+    translations/fudy_vn.ts
 )
 
 set(resources
@@ -41,27 +51,28 @@ set(PROJECT_SOURCES
         ${resources}
 )
 
+if (QT_VERSION VERSION_LESS 5.15.0)
+    qt5_add_translation(QM_FILES ${TS_FILES})
+else()
+    qt_add_translation(QM_FILES ${TS_FILES})
+endif()
+
+add_app_translations_resource(APP_RES ${QM_FILES})
+add_qt_translations_resource(QT_RES cn ja us vn)
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(fudy
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-    )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET fudy APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
+        ${APP_RES}
+        ${QT_RES}
+)
 else()
-    if(ANDROID)
-        add_library(fudy SHARED
-            ${PROJECT_SOURCES}
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(fudy
-          ${PROJECT_SOURCES}
-        )
-    endif()
+    add_executable(fudy
+        ${PROJECT_SOURCES}
+        ${APP_RES}
+        ${QT_RES}
+    )
 endif()
 
 if (NOT TARGET StylingComponents)

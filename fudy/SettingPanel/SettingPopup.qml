@@ -8,7 +8,7 @@ FudyPopup {
 	id: root
 	implicitWidth: 400
 
-	headerText: qsTr("Settings")
+	headerText: qsTr("Settings") + Translator.language
 
 	contentComponent: ColumnLayout {
 		ScrollView {

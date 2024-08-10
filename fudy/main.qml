@@ -23,7 +23,7 @@ ApplicationWindow {
 
 	color: "transparent"
 	visible: true
-	title: qsTr("Fudy Project")
+	title: qsTr("Fudy Project") + Translator.language
 
 	background: Rectangle {
 		id: windowBackground
@@ -105,7 +105,7 @@ ApplicationWindow {
 				horizontalAlignment: Text.AlignHCenter
 				color: FudyColor.fontColor2
 
-				text: qsTr("Fudy")
+				text: qsTr("Fudy") + Translator.language
 			}
 
 			MouseArea {

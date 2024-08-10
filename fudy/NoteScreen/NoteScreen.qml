@@ -28,7 +28,7 @@ Item {
 				anchors.centerIn: parent
 				font: FudyFont.keyMedium
 				color: FudyColor.fontColor2
-				text: qsTr("Add new")
+				text: qsTr("Add new") + Translator.language
 			}
 
 			MouseArea {
@@ -135,7 +135,7 @@ Item {
 				anchors.centerIn: parent
 				font: FudyFont.keyMedium
 				color: FudyColor.fontColor2
-				text: qsTr("Delete All Items")
+				text: qsTr("Delete All Items") + Translator.language
 			}
 
 			MouseArea {

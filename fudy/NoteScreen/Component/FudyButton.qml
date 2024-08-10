@@ -6,7 +6,7 @@ import Fudy.style.singleton 1.0
 
 Button {
 	id: root
-	text: qsTr("Button")
+	text: qsTr("Button") + Translator.language
 	font: FudyFont.text2
 
 	contentItem: Text {

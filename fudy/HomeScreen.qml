@@ -22,7 +22,7 @@ Item {
 		horizontalAlignment: Text.AlignHCenter
 		color: FudyColor.fontColor2
 
-		text: qsTr("Fudy")
+		text: qsTr("Fudy") + Translator.language
 	}
 
 	ListView {
@@ -56,7 +56,7 @@ Item {
 				anchors.centerIn: parent
 				color: FudyColor.fontColor4
 				font: FudyFont.keyLarge
-				text: name
+				text: name  + Translator.language
 			}
 
 			MouseArea {

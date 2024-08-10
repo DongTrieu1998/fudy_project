@@ -9,7 +9,7 @@ import "../NoteScreen/Component"
 SettingItem {
 	id: root
 
-	headerText: qsTr("Sign in")
+	headerText: qsTr("Sign in") + Translator.language
 
 	contentComponent: ColumnLayout {
 		spacing: 14
@@ -19,13 +19,13 @@ SettingItem {
 			font: FudyFont.text3
 			color: FudyColor.fontColor2
 			wrapMode: TextInput.Wrap
-			text: qsTr("Sign in to sync your notes to the cloud.")
+			text: qsTr("Sign in to sync your notes to the cloud.") + Translator.language
 		}
 
 		FudyButton {
 			font: FudyFont.text3
 
-			text: qsTr("Sign in")
+			text: qsTr("Sign in") + Translator.language
 		}
 	}
 }

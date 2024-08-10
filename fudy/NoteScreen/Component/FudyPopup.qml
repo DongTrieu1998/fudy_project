@@ -10,6 +10,9 @@ Popup {
 	property string headerText: ""
 	property alias contentComponent: contentLoader.sourceComponent
 
+	padding: 0
+	bottomPadding: 10
+	rightPadding: -1
 	dim: true
 	modal: true
 	focus: true
@@ -23,7 +26,6 @@ Popup {
 	}
 
 	contentItem: ColumnLayout {
-		anchors.fill: parent
 		spacing: 0
 
 		Loader {
@@ -32,6 +34,7 @@ Popup {
 
 			sourceComponent: ColumnLayout {
 				id: headerLoader
+				spacing: - 12
 
 				Rectangle {
 					id: headerRect
@@ -40,44 +43,62 @@ Popup {
 					radius: internal.popupRadius
 					color: FudyColor.layer7
 
-					Text {
-						id: headerText
+					clip: true
+					layer.enabled: true
+					layer.smooth: true
 
-						anchors {
-							left: headerRect.left
-							leftMargin: 20
-							verticalCenter: headerRect.verticalCenter
+					Canvas {
+						id: canvas
+						anchors.fill: parent
+						onPaint: {
+							var ctx = getContext("2d");
+							ctx.clearRect(0, 0, width, height);
+
+							ctx.beginPath();
+							ctx.moveTo(0, internal.popupRadius);
+							ctx.arcTo(0, 0, internal.popupRadius, 0, internal.popupRadius);
+							ctx.lineTo(width - internal.popupRadius, 0);
+							ctx.arcTo(width, 0, width, internal.popupRadius, internal.popupRadius);
+							ctx.lineTo(width, height);
+							ctx.lineTo(0, height);
+							ctx.closePath();
+
+							ctx.fillStyle = FudyColor.layer7;
+							ctx.fill();
 						}
-						font: FudyFont.headingPopup
-						text: root.headerText
 					}
 
-					Image {
-						id: exitIcon
-						anchors {
-							right: headerRect.right
-							rightMargin: 20
-							verticalCenter: headerRect.verticalCenter
+					    Text {
+							id: headerText
+
+							anchors {
+								left: headerRect.left
+								leftMargin: 20
+								verticalCenter: headerRect.verticalCenter
+							}
+							font: FudyFont.headingPopup
+							text: root.headerText
 						}
-						fillMode: Image.PreserveAspectFit
-						source: internal.iconSource
 
-						MouseArea {
-							anchors.fill: parent
+						Image {
+							id: exitIcon
+							anchors {
+								right: headerRect.right
+								rightMargin: 20
+								verticalCenter: headerRect.verticalCenter
+							}
+							fillMode: Image.PreserveAspectFit
+							source: internal.iconSource
 
-							onClicked: function() {
-								close();
+							MouseArea {
+								anchors.fill: parent
+
+								onClicked: function() {
+									close();
+								}
 							}
 						}
-					}
-
-					Rectangle {
-						width: parent.width
-						height: internal.popupRadius
-						anchors.bottom: headerRect.bottom
-						color: headerRect.color
-					}
-				}
+				    }
 			}
 		}
 
@@ -91,7 +112,7 @@ Popup {
 	QtObject {
 		id: internal
 
-		property int headerHeight: 50
+		property int headerHeight: 40
 		property int popupRadius: 12
 
 		property url iconSource: "qrc:/image/exit.svg"
