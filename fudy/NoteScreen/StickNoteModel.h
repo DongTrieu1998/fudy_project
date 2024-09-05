@@ -7,6 +7,7 @@
 
 struct StickItem {
 	int id = 0;
+	int userId = 0;
 	bool enabled = false;
 	QString header = "Task to do";
 	QString noteText = "";
@@ -22,6 +23,7 @@ public:
 
 	enum Roles {
 		IdRole = Qt::UserRole + 1,
+		UserId,
 		EnableRole,
 		HeaderRole,
 		NoteTextRole,

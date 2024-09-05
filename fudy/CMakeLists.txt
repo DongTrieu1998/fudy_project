@@ -20,12 +20,18 @@ include(cmake/conanpackage.cmake)
 set(headers
     NoteScreen/StickNoteController.h
     NoteScreen/StickNoteModel.h
+    controller/SignInController.h
+    controller/SessionManager.h
+    controller/ValidationSignInService.h
     FudyUtils.h
 )
 
 set(sources
     NoteScreen/StickNoteController.cpp
     NoteScreen/StickNoteModel.cpp
+    controller/SignInController.cpp
+    controller/SessionManager.cpp
+    controller/ValidationSignInService.cpp
     FudyUtils.cpp
 )
 

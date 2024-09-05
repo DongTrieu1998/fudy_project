@@ -15,13 +15,13 @@
         <file>image/search.svg</file>
         <file>image/settings.svg</file>
         <file>image/square-small.svg</file>
-        <file>font/Italianno-Regular.ttf</file>
-        <file>font/Itim-Regular.ttf</file>
-        <file>font/Jua-Regular.ttf</file>
         <file>image/remove-circle.svg</file>
         <file>image/fudy_main_icon.svg</file>
         <file>image/fudy_main_icon.png</file>
         <file>image/stick_note_3d.png</file>
         <file>image/exit.svg</file>
+        <file>font/Roboto/Roboto-Regular.ttf</file>
+        <file>font/JetBrainsMono/JetBrainsMono-Regular.ttf</file>
+        <file>image/Google.svg</file>
     </qresource>
 </RCC>

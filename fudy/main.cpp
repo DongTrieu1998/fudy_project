@@ -4,6 +4,7 @@
 #include <QQmlContext>
 
 #include "FudyUtils.h"
+#include "controller/SignInController.h"
 #include "NoteScreen/StickNoteModel.h"
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
@@ -25,6 +26,11 @@ int main(int argc, char* argv[]) {
 										, 0
 										, "FudyFont"
 										, FudyFont::createSingletonInstance);
+	qmlRegisterSingletonType<SignInController>("Fudy.signin.singleton"
+									   , 1
+									   , 0
+									   , "SignIn"
+									   , SignInController::createSingletonInstance);
 
 	app.setWindowIcon(QIcon(":/image/icons_fudy.png"));
 

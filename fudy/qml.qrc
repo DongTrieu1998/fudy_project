@@ -23,5 +23,9 @@
         <file>SettingPanel/SettingPopup.qml</file>
         <file>SettingPanel/SyncSettingItem.qml</file>
         <file>SettingPanel/ThemeSetting.qml</file>
+        <file>SignInScreen.qml</file>
+        <file>SignInComponent/SignInPanel.qml</file>
+        <file>SignInComponent/SignInWithGoogle.qml</file>
+        <file>NoteScreen/Component/ClickableText.qml</file>
     </qresource>
 </RCC>

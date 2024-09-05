@@ -38,10 +38,10 @@ public:
 	QFont keyLarge() const;
 
 private:
-	const QString m_headingFont = "Italianno";
-	const QString m_textFont1 = "Itim";
-	const QString m_textFont2 = "Imprima";
-	const QString m_keyFont = "Itim";
+	const QString m_headingFont = "Roboto";
+	const QString m_textFont1 = "JetBrainsMono";
+	const QString m_textFont2 = "JetBrainsMono";
+	const QString m_keyFont = "JetBrainsMono";
 };
 
 #endif // FUDYFONT_H

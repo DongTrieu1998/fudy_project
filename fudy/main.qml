@@ -45,9 +45,9 @@ ApplicationWindow {
 				window.hide();
 			}
 
-			onFudyIconClicked: function() {
-				screenLoader.source = "HomeScreen.qml";
-			}
+			// onFudyIconClicked: function() {
+			// 	screenLoader.source = "HomeScreen.qml";
+			// }
 		}
 
 		MouseArea{
@@ -75,13 +75,13 @@ ApplicationWindow {
 		id: welcomeComp
 		Item {
 			id: welcomeScreen
-			width: 800
-			height: 643
+			width: 1166
+			height: 800
 
 			Image {
 				id: iconImage
-				width: 300
-				height: 300
+				width: 464
+				height: 590
 				anchors {
 					top: welcomeScreen.top
 					topMargin: 92
@@ -90,29 +90,11 @@ ApplicationWindow {
 				source: "qrc:/image/fudy_main_icon.png"
 			}
 
-			Text {
-				id: text
-				width: 309
-				height: 110
-				anchors {
-					top: welcomeScreen.top
-					topMargin: 346
-					left: welcomeScreen.left
-					leftMargin: 230
-				}
-
-				font: FudyFont.heading1
-				horizontalAlignment: Text.AlignHCenter
-				color: FudyColor.fontColor2
-
-				text: qsTr("Fudy")
-			}
-
 			MouseArea {
 				anchors.fill: parent
 				onClicked: function() {
 					welcomeScreen.visible = false;
-					screenLoader.source = "HomeScreen.qml";
+					screenLoader.source = "SignInScreen.qml";
 				}
 			}
 		}

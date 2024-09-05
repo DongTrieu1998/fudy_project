@@ -17,10 +17,8 @@ QObject* FudyFont::createSingletonInstance(QQmlEngine* engine, QJSEngine* script
 }
 
 void FudyFont::addFontPath() {
-	QFontDatabase::addApplicationFont(":/font/Italianno-Regular.ttf");
-	QFontDatabase::addApplicationFont(":/font/Itim-Regular.ttf");
-	QFontDatabase::addApplicationFont(":/font/Jua-Regular.ttf");
-	QFontDatabase::addApplicationFont(":/font/Imprima-Regular.ttf");
+	QFontDatabase::addApplicationFont(":/font/Roboto/Roboto-Regular.ttf");
+	QFontDatabase::addApplicationFont(":/font/JetBrainsMono/fonts/JetBrainsMono-Regular.ttf");
 }
 
 QFont prepareFont(const QString& family, qreal fontSizeF, QFont::Weight weight = QFont::Weight::Normal) {
@@ -49,12 +47,12 @@ QFont FudyFont::text3() const {
 }
 
 QFont FudyFont::heading1() const {
-	QFont font = prepareFont(m_headingFont, 128);
+	QFont font = prepareFont(m_headingFont, 30);
 	return font;
 }
 
 QFont FudyFont::heading2() const {
-	QFont font = prepareFont(m_textFont2, 14);
+	QFont font = prepareFont(m_headingFont, 12);
 	return font;
 }
 

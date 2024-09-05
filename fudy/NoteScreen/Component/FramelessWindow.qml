@@ -151,6 +151,7 @@ ApplicationWindow {
 		}
 
 		ColumnLayout {
+			id: loaderLayout
 			anchors.fill: parent
 			anchors.margins: 10
 

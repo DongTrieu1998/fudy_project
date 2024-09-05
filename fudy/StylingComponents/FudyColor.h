@@ -30,11 +30,17 @@ class FudyColor : public QObject {
 	Q_PROPERTY(QColor layer9 READ layer9 CONSTANT FINAL)
 	Q_PROPERTY(QColor layer10 READ layer10 CONSTANT FINAL)
 	Q_PROPERTY(QColor layer11 READ layer11 CONSTANT FINAL)
+	Q_PROPERTY(QColor layer12 READ layer12 CONSTANT FINAL)
+	Q_PROPERTY(QColor layer13 READ layer13 CONSTANT FINAL)
+	Q_PROPERTY(QColor layer14 READ layer14 CONSTANT FINAL)
+	Q_PROPERTY(QColor layer15 READ layer15 CONSTANT FINAL)
 
 	Q_PROPERTY(QColor fontColor1 READ fontColor1 CONSTANT FINAL)
 	Q_PROPERTY(QColor fontColor2 READ fontColor2 CONSTANT FINAL)
 	Q_PROPERTY(QColor fontColor3 READ fontColor3 CONSTANT FINAL)
 	Q_PROPERTY(QColor fontColor4 READ fontColor4 CONSTANT FINAL)
+	Q_PROPERTY(QColor fontColor5 READ fontColor5 CONSTANT FINAL)
+	Q_PROPERTY(QColor fontColor6 READ fontColor6 CONSTANT FINAL)
 
 	explicit FudyColor(QObject* parent = nullptr);
 	static FudyColor* m_instance;
@@ -64,11 +70,18 @@ public:
 	QColor layer9() const;
 	QColor layer10() const;
 	QColor layer11() const;
+	QColor layer12() const;
+	QColor layer13() const;
+	QColor layer14() const;
+	QColor layer15() const;
 
 	QColor fontColor1() const;
 	QColor fontColor2() const;
 	QColor fontColor3() const;
 	QColor fontColor4() const;
+	QColor fontColor5() const;
+
+	QColor fontColor6() const;
 
 private:
 	//Background color
@@ -95,15 +108,18 @@ private:
 	const QRgb m_layer9 = 0xFEC8D8;
 	const QRgb m_layer10 = 0xD291BC;
 	const QRgb m_layer11 = 0x957DAD;
-
+	const QRgb m_layer12 = 0xCFDFE2;
+	const QRgb m_layer13 = 0xF7FBFF;
+	const QRgb m_layer14 = 0x162D3A;
+	const QRgb m_layer15 = 0x0F202B;
 
 	//Text color
 	const QRgb m_fontColor1 = 0xFFFFFF;
 	const QRgb m_fontColor2 = 0x000000;
 	const QRgb m_fontColor3 = 0xFFDE00;
 	const QRgb m_fontColor4 = 0x957DAD;
-
-	//Components color
+	const QRgb m_fontColor5 = 0x1E4AE9;
+	const QRgb m_fontColor6 = 0x3B6FE9;
 };
 
 #endif // FUDYCOLOR_H

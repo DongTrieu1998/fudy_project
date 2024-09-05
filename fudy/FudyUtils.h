@@ -11,6 +11,7 @@ class QGuiApplication;
 enum FudyProperties
 {
 	Id,
+	UserId,
 	Enabled,
 	Header,
 	NoteText,
@@ -20,7 +21,8 @@ enum FudyProperties
 };
 
 namespace db_utils {
-const QString cTableName = QStringLiteral("fudy");
+const QString cUserDataTableName = QStringLiteral("userData");
+const QString cUserTableName = QStringLiteral("user");
 
 bool createDatabase(const QGuiApplication& app);
 } // namespace utils

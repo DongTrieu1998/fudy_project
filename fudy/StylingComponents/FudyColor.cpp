@@ -122,3 +122,27 @@ QColor FudyColor::fontColor3() const {
 QColor FudyColor::fontColor4() const {
 	return QColor::fromRgb(m_fontColor4);
 }
+
+QColor FudyColor::layer12() const {
+	return QColor::fromRgb(m_layer12);
+}
+
+QColor FudyColor::layer13() const {
+	return QColor::fromRgb(m_layer13);
+}
+
+QColor FudyColor::fontColor5() const {
+	return QColor::fromRgb(m_fontColor5);
+}
+
+QColor FudyColor::layer14() const {
+	return QColor::fromRgb(m_layer14);
+}
+
+QColor FudyColor::layer15() const {
+	return QColor::fromRgb(m_layer15);
+}
+
+QColor FudyColor::fontColor6() const {
+	return QColor::fromRgb(m_fontColor6);
+}
