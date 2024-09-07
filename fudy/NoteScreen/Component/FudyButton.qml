@@ -1,12 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 import QtQuick.Controls.Basic
 
 import Fudy.style.singleton 1.0
 
 Button {
 	id: root
-	text: qsTr("Button")
+	text: qsTr("Button") + Translator.language
 	font: FudyFont.text2
 
 	contentItem: Text {

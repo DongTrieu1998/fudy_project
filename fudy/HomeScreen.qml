@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
 import Qt5Compat.GraphicalEffects
 
 import Fudy.style.singleton 1.0
@@ -22,7 +22,7 @@ Item {
 		horizontalAlignment: Text.AlignHCenter
 		color: FudyColor.fontColor2
 
-		text: qsTr("Fudy")
+		text: qsTr("Fudy") + Translator.language
 	}
 
 	ListView {
@@ -56,7 +56,7 @@ Item {
 				anchors.centerIn: parent
 				color: FudyColor.fontColor4
 				font: FudyFont.keyLarge
-				text: name
+				text: name  + Translator.language
 			}
 
 			MouseArea {

@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import Qt.labs.platform 1.1
+import QtQuick
+import Qt.labs.platform
 
 SystemTrayIcon {
 	id: root
@@ -9,7 +9,7 @@ SystemTrayIcon {
 	visible: true
 	icon.source: "qrc:/image/icons_fudy.png"
 
-	tooltip: qsTr("Fudy - Ready")
+	tooltip: qsTr("Fudy - Ready") + Translator.language
 
 	onActivated: function(reason) {
 		if (reason === SystemTrayIcon.DoubleClick) {
@@ -19,11 +19,11 @@ SystemTrayIcon {
 
 	menu: Menu {
 		MenuItem {
-			text: qsTr("Show")
+			text: qsTr("Show") + Translator.language
 			onTriggered: function() {root.show();}
 		}
 		MenuItem {
-			text: qsTr("Quit")
+			text: qsTr("Quit") + Translator.language
 			onTriggered: function() {Qt.quit();}
 		}
 	}

@@ -5,6 +5,7 @@
 
 #include "FudyUtils.h"
 #include "NoteScreen/StickNoteModel.h"
+#include "translations/translation/translation.h"
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
 
@@ -14,6 +15,7 @@ int main(int argc, char* argv[]) {
 #endif
 	QGuiApplication app(argc, argv);
 	QQmlApplicationEngine engine;
+	Translator translator(&app);
 
 	qmlRegisterSingletonType<FudyColor>("Fudy.style.singleton"
 										, 1
@@ -32,6 +34,7 @@ int main(int argc, char* argv[]) {
 
 	StickNoteModel stickNoteModel;
 	engine.rootContext()->setContextProperty("StickNoteModel", &stickNoteModel);
+	engine.rootContext()->setContextProperty("Translator", &translator);
 
 	const QUrl url(QStringLiteral("qrc:/main.qml"));
 	QObject::connect(

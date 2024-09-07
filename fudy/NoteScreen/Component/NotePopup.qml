@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import "../../SettingPanel"
 
@@ -13,7 +13,7 @@ FudyPopup {
 	property string popupText: ""
 	signal popupContentChanged(string popupContent)
 
-	headerText: qsTr("Header")
+	headerText: qsTr("Header") + Translator.language
 
 	contentComponent: ColumnLayout {
 		spacing: 12
@@ -26,7 +26,7 @@ FudyPopup {
 			color: FudyColor.fontColor2
 			wrapMode: TextInput.Wrap
 			maximumLength: 255
-			placeholderText: qsTr("Enter your Note's header")
+			placeholderText: qsTr("Enter your Note's header") + Translator.language
 			text: root.popupText
 
 			onEditingFinished: function() {
@@ -50,7 +50,7 @@ FudyPopup {
 			spacing: 10
 
 			FudyButton {
-				text: qsTr("Accept")
+				text: qsTr("Accept") + Translator.language
 
 				onClicked: function() {
 					root.popupContentChanged(textField.text);
@@ -59,7 +59,7 @@ FudyPopup {
 			}
 
 			FudyButton {
-				text: qsTr("Cancel")
+				text: qsTr("Cancel") + Translator.language
 
 				onClicked: function() {
 					close();

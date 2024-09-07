@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import "../../SettingPanel"
 
@@ -8,27 +8,27 @@ import Fudy.style.singleton 1.0
 
 FudyPopup {
 	id: root
+	implicitWidth: 325
 
 	signal deleteItem()
-
-	implicitWidth: 325
 
 	contentComponent: ColumnLayout {
 		spacing: 12
 
 		Text {
 			id: deleteText
-			Layout.alignment: Qt.AlignHCenter
+			Layout.leftMargin: 10
+			Layout.fillWidth: true
 			font: FudyFont.text2
 			color: FudyColor.fontColor2
-			wrapMode: TextInput.Wrap
-			text: qsTr("Do you want to delete this note?")
+			wrapMode: Text.Wrap
+			text: qsTr("Do you want to delete this note?") + Translator.language
 		}
 
 		CheckBox {
 			Layout.leftMargin: 20
 			font: FudyFont.text2
-			text: qsTr("Don’t show again")
+			text: qsTr("Don’t show again") + Translator.language
 		}
 
 		RowLayout {
@@ -38,14 +38,14 @@ FudyPopup {
 			spacing: 10
 
 			FudyButton {
-				text: qsTr("Delete")
+				text: qsTr("Delete") + Translator.language
 				onClicked: {
 					root.deleteItem();
 				}
 			}
 
 			FudyButton {
-				text: qsTr("Keep")
+				text: qsTr("Keep") + Translator.language
 
 				onClicked: function() {
 					root.close();

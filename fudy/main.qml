@@ -1,7 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtQuick.Window
+import QtQuick.Layouts
+import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 
 import "NoteScreen/Component"
@@ -23,7 +23,7 @@ ApplicationWindow {
 
 	color: "transparent"
 	visible: true
-	title: qsTr("Fudy Project")
+	title: qsTr("Fudy Project") + Translator.language
 
 	background: Rectangle {
 		id: windowBackground
@@ -105,7 +105,7 @@ ApplicationWindow {
 				horizontalAlignment: Text.AlignHCenter
 				color: FudyColor.fontColor2
 
-				text: qsTr("Fudy")
+				text: qsTr("Fudy") + Translator.language
 			}
 
 			MouseArea {

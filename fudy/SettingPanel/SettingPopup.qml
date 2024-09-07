@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
 
 import "../NoteScreen/Component"
 
@@ -8,7 +8,7 @@ FudyPopup {
 	id: root
 	implicitWidth: 400
 
-	headerText: qsTr("Settings")
+	headerText: qsTr("Settings") + Translator.language
 
 	contentComponent: ColumnLayout {
 		ScrollView {
