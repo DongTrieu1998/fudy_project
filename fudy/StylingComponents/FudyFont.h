@@ -38,9 +38,9 @@ public:
 	QFont keyLarge() const;
 
 private:
-	const QString m_headingFont = "Italianno";
-	const QString m_textFont1 = "Itim";
-	const QString m_textFont2 = "Imprima";
+	const QString m_headingFont = "Roboto";
+	const QString m_textFont1 = "Roboto";
+	const QString m_textFont2 = "Roboto";
 	const QString m_keyFont = "Itim";
 };
 

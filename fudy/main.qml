@@ -46,7 +46,7 @@ ApplicationWindow {
 			}
 
 			onFudyIconClicked: function() {
-				screenLoader.source = "HomeScreen.qml";
+				screenLoader.source = "qrc:/SignInScreen/SignInScreen.qml";
 			}
 		}
 
@@ -68,6 +68,8 @@ ApplicationWindow {
 
 	Loader {
 		id: screenLoader
+		width: 1166
+		height: 800
 		sourceComponent: welcomeComp
 	}
 
@@ -75,8 +77,6 @@ ApplicationWindow {
 		id: welcomeComp
 		Item {
 			id: welcomeScreen
-			width: 1166
-			height: 800
 
 			Image {
 				id: iconImage
@@ -89,7 +89,7 @@ ApplicationWindow {
 				anchors.fill: parent
 				onClicked: function() {
 					welcomeScreen.visible = false;
-					screenLoader.source = "HomeScreen.qml";
+					screenLoader.source = "qrc:/SignInScreen/SignInScreen.qml";
 				}
 			}
 		}

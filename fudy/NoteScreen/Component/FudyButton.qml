@@ -1,31 +1,51 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts
 import QtQuick.Controls.Basic
 
 import Fudy.style.singleton 1.0
 
 Button {
 	id: root
-	text: qsTr("Button")
-	font: FudyFont.text2
 
-	contentItem: Text {
-		text: root.text
-		font: root.font
-		opacity: enabled ? 1.0 : 0.3
-		color: root.down ? FudyColor.layer5 : FudyColor.layer8
-		horizontalAlignment: Text.AlignHCenter
-		verticalAlignment: Text.AlignVCenter
-		elide: Text.ElideRight
+	property color textColor: FudyColor.layer8
+	property color textPressColor: FudyColor.layer5
+	property color backgroundColor: FudyColor.layer6
+	property color backgroundPressColor: FudyColor.layer7
+	property url iconSource: ""
+
+	text: qsTr("Button")
+	font: FudyFont.text1
+
+	contentItem: ColumnLayout {
+		RowLayout {
+			Layout.alignment: Qt.AlignCenter
+			spacing: 16
+
+			Image {
+				id: icon
+				fillMode: Image.PreserveAspectFit
+				Layout.alignment: Qt.AlignVCenter
+				source: iconSource
+			}
+
+			Text {
+				Layout.alignment: Qt.AlignVCenter
+				text: root.text
+				font: root.font
+				opacity: enabled ? 1.0 : 0.3
+				color: root.down ? textPressColor : textColor
+				verticalAlignment: Text.AlignVCenter
+				elide: Text.ElideRight
+			}
+		}
 	}
 
 	background: Rectangle {
 		implicitWidth: 86
 		implicitHeight: 27
 		opacity: enabled ? 1 : 0.3
-		border.color: root.down ? FudyColor.layer6 : FudyColor.layer7
-		color: root.down ? FudyColor.layer7 : FudyColor.layer6
-		border.width: 1
+		color: root.down ? backgroundPressColor : backgroundColor
 		radius: 12
 	}
 }

@@ -22,5 +22,7 @@
         <file>image/stick_note_3d.png</file>
         <file>image/exit.svg</file>
         <file>image/fudy_main_icon.png</file>
+        <file>font/Roboto/Roboto-Regular.ttf</file>
+        <file>image/Google.svg</file>
     </qresource>
 </RCC>

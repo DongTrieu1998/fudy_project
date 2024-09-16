@@ -7,8 +7,8 @@ import Fudy.style.singleton 1.0
 
 Item {
 	id: root
-	width: 800
-	height: 643
+	width: 1166
+	height: 800
 
 	Text {
 		id: title
