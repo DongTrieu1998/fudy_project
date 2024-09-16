@@ -19,9 +19,8 @@
         <file>font/Itim-Regular.ttf</file>
         <file>font/Jua-Regular.ttf</file>
         <file>image/remove-circle.svg</file>
-        <file>image/fudy_main_icon.svg</file>
-        <file>image/fudy_main_icon.png</file>
         <file>image/stick_note_3d.png</file>
         <file>image/exit.svg</file>
+        <file>image/fudy_main_icon.png</file>
     </qresource>
 </RCC>
