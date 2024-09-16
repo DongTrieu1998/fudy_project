@@ -75,37 +75,14 @@ ApplicationWindow {
 		id: welcomeComp
 		Item {
 			id: welcomeScreen
-			width: 800
-			height: 643
+			width: 1166
+			height: 800
 
 			Image {
 				id: iconImage
-				width: 300
-				height: 300
-				anchors {
-					top: welcomeScreen.top
-					topMargin: 92
-					horizontalCenter: welcomeScreen.horizontalCenter
-				}
+				fillMode: Image.PreserveAspectFit
+				anchors.centerIn: parent
 				source: "qrc:/image/fudy_main_icon.png"
-			}
-
-			Text {
-				id: text
-				width: 309
-				height: 110
-				anchors {
-					top: welcomeScreen.top
-					topMargin: 346
-					left: welcomeScreen.left
-					leftMargin: 230
-				}
-
-				font: FudyFont.heading1
-				horizontalAlignment: Text.AlignHCenter
-				color: FudyColor.fontColor2
-
-				text: qsTr("Fudy")
 			}
 
 			MouseArea {
