@@ -21,6 +21,7 @@ void FudyFont::addFontPath() {
 	QFontDatabase::addApplicationFont(":/font/Itim-Regular.ttf");
 	QFontDatabase::addApplicationFont(":/font/Jua-Regular.ttf");
 	QFontDatabase::addApplicationFont(":/font/Imprima-Regular.ttf");
+	QFontDatabase::addApplicationFont(":/font/Roboto/Roboto-Regular.ttf");
 }
 
 QFont prepareFont(const QString& family, qreal fontSizeF, QFont::Weight weight = QFont::Weight::Normal) {
@@ -34,7 +35,7 @@ QFont prepareFont(const QString& family, qreal fontSizeF, QFont::Weight weight =
 }
 
 QFont FudyFont::text1() const {
-	QFont font = prepareFont(m_textFont1, 16);
+	QFont font = prepareFont(m_textFont1, 14);
 	return font;
 }
 
@@ -49,7 +50,7 @@ QFont FudyFont::text3() const {
 }
 
 QFont FudyFont::heading1() const {
-	QFont font = prepareFont(m_headingFont, 128);
+	QFont font = prepareFont(m_headingFont, 32);
 	return font;
 }
 

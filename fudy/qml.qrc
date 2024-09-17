@@ -23,5 +23,9 @@
         <file>SettingPanel/SettingPopup.qml</file>
         <file>SettingPanel/SyncSettingItem.qml</file>
         <file>SettingPanel/ThemeSetting.qml</file>
+        <file>SignInScreen/SignInScreen.qml</file>
+        <file>SignInScreen/InputBox.qml</file>
+        <file>FudyComponents/ClickableText.qml</file>
+        <file>SignInScreen/SignInPanel.qml</file>
     </qresource>
 </RCC>
