@@ -15,27 +15,15 @@ ColumnLayout {
 	Text {
 		id: title
 
-		text: qsTr("Welcome Back")
+		text: qsTr("Create an account")
 		font: FudyFont.heading1
 	}
 
-	ColumnLayout {
+	Text {
+		id: titleContent
 
-		Layout.fillWidth: true
-
-		Text {
-			id: titleContent
-
-			text: qsTr("Today is a new day. It's your day.")
-			font: FudyFont.heading2
-		}
-
-		Text {
-			id: titleContent2
-
-			text: qsTr("Sign in to start managing your projects.")
-			font: FudyFont.heading2
-		}
+		text: qsTr("Please enter your details")
+		font: FudyFont.heading2
 	}
 
 	ColumnLayout {
@@ -48,7 +36,7 @@ ColumnLayout {
 
 			Layout.alignment: Qt.AlignRight
 			title: qsTr("Email")
-			placeHolder: qsTr("Example@email.com")
+			placeHolder: qsTr("Please enter your email")
 		}
 
 		InputBox {
@@ -56,17 +44,47 @@ ColumnLayout {
 
 			Layout.alignment: Qt.AlignRight
 			title: qsTr("Password")
-			placeHolder: qsTr("At least 8 characters")
+			placeHolder: qsTr("Enter your password")
 		}
 
-		ClickableText {
-			id: clickableText
+		InputBox {
+			id: retypePasswordInput
 
 			Layout.alignment: Qt.AlignRight
-			text: qsTr("Forgot Password?")
+			title: qsTr("Retype Password")
+			placeHolder: qsTr("Retype your password")
+		}
+
+		Row {
+
+			Layout.alignment: Qt.AlignCenter
+
+			Text {
+				id: signUpText
+
+				text: qsTr("Already have an account?")
+				font: FudyFont.text1
+			}
+
+			Text {
+				text: " "
+				font: FudyFont.text1
+			}
+
+			ClickableText {
+				id: clickableSignUpText
+
+				Layout.alignment: Qt.AlignRight
+				text: qsTr("Sign In")
+
+				onClicked: function() {
+					panelLoader.source = "qrc:/SignInScreen/SignInPanel.qml"
+				}
+			}
 		}
 
 		FudyButton {
+
 			Layout.fillWidth: true
 			Layout.preferredHeight: 52
 
@@ -79,36 +97,7 @@ ColumnLayout {
 		}
 	}
 
-	Row {
-
-		Layout.alignment: Qt.AlignCenter
-
-		Text {
-			id: signUpText
-
-			text: qsTr("Don't you have an account?")
-			font: FudyFont.text1
-		}
-
-		Text {
-			text: " "
-			font: FudyFont.text1
-		}
-
-		ClickableText {
-			id: clickableSignUpText
-
-			Layout.alignment: Qt.AlignRight
-			text: qsTr("Sign up")
-
-			onClicked: function() {
-				panelLoader.source = "qrc:/SignInScreen/SignUpPanel.qml"
-			}
-		}
-	}
-
 	RowLayout {
-
 		Layout.alignment: Qt.AlignCenter
 		spacing: 16
 

@@ -24,6 +24,7 @@ Button {
 
 			Image {
 				id: icon
+				visible: !!root.iconSource.toString().length
 				fillMode: Image.PreserveAspectFit
 				Layout.alignment: Qt.AlignVCenter
 				source: iconSource
