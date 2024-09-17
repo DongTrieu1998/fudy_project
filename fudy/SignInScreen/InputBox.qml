@@ -28,7 +28,7 @@ Item {
 			width: root.width
 			height: 48
 			radius: 12
-			color: "#F7FBFF"
+			color: FudyColor.layer12
 
 			TextField {
 				id: inputField

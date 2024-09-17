@@ -70,10 +70,10 @@ ColumnLayout {
 			Layout.fillWidth: true
 			Layout.preferredHeight: 52
 
-			textColor: "#FFFFFF"
-			textPressColor: "#FFFFFF"
-			backgroundColor: "#162D3A"
-			backgroundPressColor: "#162D3A"
+			textColor: FudyColor.fontColor1
+			textPressColor: FudyColor.fontColor1
+			backgroundColor: FudyColor.layer13
+			backgroundPressColor: FudyColor.layer13
 
 			text: qsTr("Sign in")
 		}
@@ -111,7 +111,7 @@ ColumnLayout {
 		SplitterItem {
 			width: 164
 			Layout.alignment: Qt.AlignVCenter
-			color: "#CFDFE2"
+			color: FudyColor.layer14
 		}
 
 		Text {
@@ -123,7 +123,7 @@ ColumnLayout {
 		SplitterItem {
 			width: 164
 			Layout.alignment: Qt.AlignVCenter
-			color: "#CFDFE2"
+			color: FudyColor.layer14
 		}
 	}
 
@@ -131,10 +131,10 @@ ColumnLayout {
 		Layout.fillWidth: true
 		Layout.preferredHeight: 52
 
-		textColor: "#313957"
-		textPressColor: "#313957"
-		backgroundColor: "#F3F9FA"
-		backgroundPressColor: "#F3F9FA"
+		textColor: FudyColor.fontColor6
+		textPressColor: FudyColor.fontColor6
+		backgroundColor: FudyColor.layer15
+		backgroundPressColor: FudyColor.layer15
 		iconSource: "qrc:/image/Google.svg"
 
 		text: qsTr("Sign in with Google")
