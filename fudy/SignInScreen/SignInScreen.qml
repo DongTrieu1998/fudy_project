@@ -16,7 +16,8 @@ Item {
 
 		anchors {
 			right: imagePanel.left
-			verticalCenter: imagePanel.verticalCenter
+			top: imagePanel.top
+			topMargin: 70
 		}
 
 		sourceComponent: signInPanel

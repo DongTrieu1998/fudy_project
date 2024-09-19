@@ -8,6 +8,8 @@ import Fudy.style.singleton 1.0
 Item {
 	id: root
 
+	signal clicked()
+
 	property string text: ""
 
 	implicitWidth: clickableText.width
@@ -24,12 +26,16 @@ Item {
 			anchors.fill: parent
 			hoverEnabled: true
 
-			onContainsMouseChanged: function() {
+			onEntered: function() {
+				cursorShape = Qt.PointingHandCursor
+			}
 
+			onExited: function() {
+				cursorShape = Qt.ArrowCursor
 			}
 
 			onClicked: function() {
-
+				root.clicked();
 			}
 		}
 	}

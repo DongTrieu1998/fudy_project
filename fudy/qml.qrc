@@ -27,5 +27,6 @@
         <file>SignInScreen/InputBox.qml</file>
         <file>FudyComponents/ClickableText.qml</file>
         <file>SignInScreen/SignInPanel.qml</file>
+        <file>SignInScreen/SignUpPanel.qml</file>
     </qresource>
 </RCC>
