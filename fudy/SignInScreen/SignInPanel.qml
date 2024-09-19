@@ -64,6 +64,10 @@ ColumnLayout {
 
 			Layout.alignment: Qt.AlignRight
 			text: qsTr("Forgot Password?")
+
+			onClicked: function() {
+				panelLoader.source = "qrc:/SignInScreen/ForgotPasswordPanel.qml"
+			}
 		}
 
 		FudyButton {

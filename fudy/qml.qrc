@@ -28,5 +28,6 @@
         <file>FudyComponents/ClickableText.qml</file>
         <file>SignInScreen/SignInPanel.qml</file>
         <file>SignInScreen/SignUpPanel.qml</file>
+        <file>SignInScreen/ForgotPasswordPanel.qml</file>
     </qresource>
 </RCC>
