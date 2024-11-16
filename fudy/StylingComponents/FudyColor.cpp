@@ -37,23 +37,19 @@ QColor FudyColor::background6() const {
 	return QColor::fromRgb(m_background6);
 }
 
-QColor FudyColor::background7() const
-{
+QColor FudyColor::background7() const {
 	return QColor::fromRgb(m_background7);
 }
 
-QColor FudyColor::background8() const
-{
+QColor FudyColor::background8() const {
 	return QColor::fromRgb(m_background8);
 }
 
-QColor FudyColor::background9() const
-{
+QColor FudyColor::background9() const {
 	return QColor::fromRgb(m_background9);
 }
 
-QColor FudyColor::background10() const
-{
+QColor FudyColor::background10() const {
 	return QColor::fromRgb(m_background10);
 }
 
@@ -77,33 +73,27 @@ QColor FudyColor::layer5() const {
 	return QColor::fromRgb(m_layer5);
 }
 
-QColor FudyColor::layer6() const
-{
+QColor FudyColor::layer6() const {
 	return QColor::fromRgb(m_layer6);
 }
 
-QColor FudyColor::layer7() const
-{
+QColor FudyColor::layer7() const {
 	return QColor::fromRgb(m_layer7);
 }
 
-QColor FudyColor::layer8() const
-{
+QColor FudyColor::layer8() const {
 	return QColor::fromRgb(m_layer8);
 }
 
-QColor FudyColor::layer9() const
-{
+QColor FudyColor::layer9() const {
 	return QColor::fromRgb(m_layer9);
 }
 
-QColor FudyColor::layer10() const
-{
+QColor FudyColor::layer10() const {
 	return QColor::fromRgb(m_layer10);
 }
 
-QColor FudyColor::layer11() const
-{
+QColor FudyColor::layer11() const {
 	return QColor::fromRgb(m_layer11);
 }
 

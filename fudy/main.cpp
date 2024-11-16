@@ -5,9 +5,9 @@
 
 #include "FudyUtils.h"
 #include "NoteScreen/StickNoteModel.h"
-#include "translations/translation/translation.h"
 #include "StylingComponents/FudyColor.h"
 #include "StylingComponents/FudyFont.h"
+#include "translations/translation/translation.h"
 
 int main(int argc, char* argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -17,16 +17,10 @@ int main(int argc, char* argv[]) {
 	QQmlApplicationEngine engine;
 	Translator translator(&app);
 
-	qmlRegisterSingletonType<FudyColor>("Fudy.style.singleton"
-										, 1
-										, 0
-										, "FudyColor"
-										, FudyColor::createSingletonInstance);
-	qmlRegisterSingletonType<FudyFont>("Fudy.style.singleton"
-										, 1
-										, 0
-										, "FudyFont"
-										, FudyFont::createSingletonInstance);
+	qmlRegisterSingletonType<FudyColor>(
+		"Fudy.style.singleton", 1, 0, "FudyColor", FudyColor::createSingletonInstance);
+	qmlRegisterSingletonType<FudyFont>(
+		"Fudy.style.singleton", 1, 0, "FudyFont", FudyFont::createSingletonInstance);
 
 	app.setWindowIcon(QIcon(":/image/icons_fudy.png"));
 

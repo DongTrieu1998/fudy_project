@@ -23,7 +23,9 @@ void FudyFont::addFontPath() {
 	QFontDatabase::addApplicationFont(":/font/Imprima-Regular.ttf");
 }
 
-QFont prepareFont(const QString& family, qreal fontSizeF, QFont::Weight weight = QFont::Weight::Normal) {
+QFont prepareFont(const QString& family,
+				  qreal fontSizeF,
+				  QFont::Weight weight = QFont::Weight::Normal) {
 	QFont font;
 	font.setFamily(family);
 	font.setPointSizeF(fontSizeF);

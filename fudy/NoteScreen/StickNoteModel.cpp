@@ -106,7 +106,7 @@ bool StickNoteModel::removeItemAt(int index) {
 	}
 
 	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "remove item at" << index
-							  << "successfully";
+								  << "successfully";
 
 	queryData();
 	return true;
@@ -134,7 +134,8 @@ bool StickNoteModel::appendNewItem() {
 		return false;
 	}
 
-	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName << "append new item successfully";
+	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName
+								  << "append new item successfully";
 
 	queryData();
 	return true;
@@ -154,14 +155,17 @@ bool StickNoteModel::removeCompletedItems() {
 	}
 
 	qCInfo(F_LOG::sticknoteModel) << "Table" << db_utils::cTableName
-							  << "removed all items successfully";
+								  << "removed all items successfully";
 
 	queryData();
 	return true;
 }
 
 //TODO: Refector this function as it is called multiple time
-bool StickNoteModel::updateProperty(const QString& tableName, const QString& property, int id, const QVariant& value) {
+bool StickNoteModel::updateProperty(const QString& tableName,
+									const QString& property,
+									int id,
+									const QVariant& value) {
 	QSqlQuery query;
 	query.prepare(QString("update %1 set %2 = ? where id = ?").arg(tableName).arg(property));
 
@@ -180,27 +184,40 @@ bool StickNoteModel::updateProperty(const QString& tableName, const QString& pro
 }
 
 bool StickNoteModel::updateEnabled(int index, bool enabled) {
-	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Enabled), m_items[index].id, enabled);
+	return updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::Enabled),
+						  m_items[index].id,
+						  enabled);
 }
 
 bool StickNoteModel::updateHeader(int index, QString header) {
-	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Header), m_items[index].id, header);
+	return updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::Header),
+						  m_items[index].id,
+						  header);
 }
 
 bool StickNoteModel::updateNoteText(int index, QString notetext) {
-	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::NoteText), m_items[index].id, notetext);
+	return updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::NoteText),
+						  m_items[index].id,
+						  notetext);
 }
 
 bool StickNoteModel::updateVisible(int index, bool visible) {
-	return updateProperty(
-		db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::Visible), m_items[index].id, visible);
+	return updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::Visible),
+						  m_items[index].id,
+						  visible);
 }
 
 bool StickNoteModel::updateAxis(int index, int xaxis, int yaxis) {
-	return updateProperty(
-			   db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::XAxis), m_items[index].id, xaxis) &&
-		   updateProperty(db_utils::cTableName, fudy_props_helper::to_string(FudyProperties::YAxis), m_items[index].id, yaxis);
+	return updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::XAxis),
+						  m_items[index].id,
+						  xaxis) &&
+		   updateProperty(db_utils::cTableName,
+						  fudy_props_helper::to_string(FudyProperties::YAxis),
+						  m_items[index].id,
+						  yaxis);
 }
