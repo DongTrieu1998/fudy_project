@@ -96,7 +96,6 @@ private:
 	const QRgb m_layer10 = 0xD291BC;
 	const QRgb m_layer11 = 0x957DAD;
 
-
 	//Text color
 	const QRgb m_fontColor1 = 0xFFFFFF;
 	const QRgb m_fontColor2 = 0x000000;

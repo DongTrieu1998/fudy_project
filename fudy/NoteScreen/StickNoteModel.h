@@ -1,4 +1,4 @@
-	#ifndef STICKNOTEMODEL_H
+#ifndef STICKNOTEMODEL_H
 #define STICKNOTEMODEL_H
 
 #include <QAbstractListModel>
@@ -40,7 +40,10 @@ public slots:
 	bool removeItemAt(int index);
 	bool removeCompletedItems();
 
-	bool updateProperty(const QString& tableName, const QString& property, int id, const QVariant& value);
+	bool updateProperty(const QString& tableName,
+						const QString& property,
+						int id,
+						const QVariant& value);
 	bool updateEnabled(int index, bool enabled);
 	bool updateHeader(int index, QString header);
 	bool updateNoteText(int index, QString notetext);
